@@ -1,0 +1,16 @@
+{
+  "name": "ytc-front-homepage-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ytc-front/homepage/feature/src",
+  "projectType": "library",
+  "tags": ["scope:ytc-front", "type:feature"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ytc-front/homepage/feature/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "ytc-front-homepage-feature-shell",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ytc-front/homepage/feature-shell/src",
+  "projectType": "library",
+  "tags": ["scope:ytc-front", "type:feature"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/ytc-front/homepage/feature-shell/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}
