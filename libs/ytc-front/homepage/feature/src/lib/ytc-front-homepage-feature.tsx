@@ -1,11 +1,15 @@
+import { Button } from '@org/shared/ui-components';
 import { useEffect, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 export function YtcFrontHomepageFeature() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('night');
 
   const toggleTheme = () => {
     setTheme(theme === 'night' ? 'emerald' : 'night');
   };
+
+  const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
     document?.querySelector('html')?.setAttribute('data-theme', theme);
@@ -20,6 +24,9 @@ export function YtcFrontHomepageFeature() {
           <input onClick={toggleTheme} type="checkbox" className="toggle" />
         </label>
       </div>
+      <Button buttonType="btn-accent" onClick={() => navigate('videos')}>
+        Login
+      </Button>
     </>
   );
 }

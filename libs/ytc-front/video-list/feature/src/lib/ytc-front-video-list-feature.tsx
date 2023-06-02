@@ -11,7 +11,6 @@ export function YtcFrontVideoListFeature(props: YtcFrontVideoListFeatureProps) {
   const [videoList, setVideoList] = useState<VideoType[]>([]);
 
   useEffect(() => {
-    console.warn('useEffect is triggered!');
     getVideoList().subscribe((videosList: VideoType[]) => {
       setVideoList(videosList);
     });
