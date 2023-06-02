@@ -18,9 +18,12 @@
       "@org/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
       "@org/ytc-front/homepage/feature": ["libs/ytc-front/homepage/feature/src/index.ts"],
       "@org/ytc-front/homepage/feature-shell": ["libs/ytc-front/homepage/feature-shell/src/index.ts"],
+      "@org/ytc-front/shared/comment/feature": ["libs/ytc-front/shared/comment/feature/src/index.ts"],
+      "@org/ytc-front/shared/comment/utils": ["libs/ytc-front/shared/comment/utils/src/index.ts"],
       "@org/ytc-front/shared/video/util": ["libs/ytc-front/shared/video/util/src/index.ts"],
       "@org/ytc-front/video-list/data-access": ["libs/ytc-front/video-list/data-access/src/index.ts"],
-      "@org/ytc-front/video-list/feature": ["libs/ytc-front/video-list/feature/src/index.ts"]
+      "@org/ytc-front/video-list/feature": ["libs/ytc-front/video-list/feature/src/index.ts"],
+      "@org/ytc-front/video/video-details/feature": ["libs/ytc-front/video/video-details/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
