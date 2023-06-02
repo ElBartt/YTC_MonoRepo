@@ -1,4 +1,4 @@
-import { YtcFrontHomepageFeatureShell } from "@org/ytc-front/homepage/feature-shell";
+import { YtcFrontHomepageFeatureShell } from '@org/ytc-front/homepage/feature-shell';
 
 export function App() {
   return (
