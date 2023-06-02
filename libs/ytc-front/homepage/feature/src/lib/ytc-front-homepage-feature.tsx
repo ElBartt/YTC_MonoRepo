@@ -1,5 +1,3 @@
-import { Button } from '@org/shared/ui-components';
-import { getVideoList } from '@org/ytc-front/video-list/data-access';
 import { useEffect, useState } from 'react';
 
 export function YtcFrontHomepageFeature() {
@@ -7,11 +5,6 @@ export function YtcFrontHomepageFeature() {
 
   const toggleTheme = () => {
     setTheme(theme === 'night' ? 'emerald' : 'night');
-  };
-
-  const testFetch = (): void => {
-    console.log('testFetch');
-    getVideoList().subscribe();
   };
 
   useEffect(() => {
@@ -27,11 +20,6 @@ export function YtcFrontHomepageFeature() {
           <input onClick={toggleTheme} type="checkbox" className="toggle" />
         </label>
       </div>
-      <Button onClick={testFetch} buttonType="btn-primary">
-        Click
-      </Button>
     </>
   );
 }
-
-export default YtcFrontHomepageFeature;

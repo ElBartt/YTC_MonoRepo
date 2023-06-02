@@ -1,5 +1,5 @@
 import { VideoSchema, VideoType } from '@org/ytc-front/shared/video/util';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 
 // TODO: Move theses variables to a better place
@@ -15,6 +15,7 @@ export function getVideoList(): Observable<VideoType[]> {
       'api-key': apiKey,
     },
   }).pipe(
+    tap(console.warn),
     map(({ response }: AjaxResponse<VideoType[]>) => {
       if (Array.isArray(response)) {
         return response.map((video: VideoType) => VideoSchema.parse(video));

@@ -4,10 +4,10 @@ export interface ButtonProps {
   readonly onClick: () => void;
 }
 
-export function Button({children, buttonType, onClick}: ButtonProps) {
+export function Button({ children, buttonType, onClick }: ButtonProps) {
   return (
-    <button onClick={() => onClick()} className={`btn ${buttonType}`}>{ children }</button>
+    <button onClick={() => onClick()} className={`btn ${buttonType}`}>
+      {children}
+    </button>
   );
 }
-
-export default Button;
