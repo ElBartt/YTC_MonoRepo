@@ -1,14 +1,14 @@
 import { Card } from '@org/shared/ui-components';
 import { VideoType } from '@org/ytc-front/shared/video/util';
-import { getVideoList } from '@org/ytc-front/video-list/data-access';
+import { getVideoList } from '@org/ytc-front/video/video-list/data-access';
 import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-export interface YtcFrontVideoListFeatureProps {}
-
-export function YtcFrontVideoListFeature(props: YtcFrontVideoListFeatureProps) {
+export function YtcFrontVideoListFeature() {
   const [videoList, setVideoList] = useState<VideoType[]>([]);
+
+  const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
     getVideoList().subscribe((videosList: VideoType[]) => {
@@ -27,9 +27,7 @@ export function YtcFrontVideoListFeature(props: YtcFrontVideoListFeatureProps) {
             cardTitle={video.title}
             imgUrl={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
             subTitle={format(parseISO(video.date), 'MM/dd/yyyy')}
-            onClick={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            onClick={() => navigate(`${video.id}`)}
           ></Card>
         );
       })}

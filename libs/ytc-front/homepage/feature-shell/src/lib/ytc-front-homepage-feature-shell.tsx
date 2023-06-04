@@ -1,5 +1,5 @@
 import { YtcFrontHomepageFeature } from '@org/ytc-front/homepage/feature';
-import { YtcFrontVideoListFeature } from '@org/ytc-front/video-list/feature';
+import { videoListRoutes } from '@org/ytc-front/video/video-list/feature-shell';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -7,10 +7,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <YtcFrontHomepageFeature />,
   },
-  {
-    path: '/videos',
-    element: <YtcFrontVideoListFeature />,
-  },
+  ...videoListRoutes,
 ]);
 
 export function YtcFrontHomepageFeatureShell() {

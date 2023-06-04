@@ -4,14 +4,13 @@ export interface CardProps {
   readonly btnText: string;
   readonly cardTitle: string;
   readonly imgUrl: string;
-  readonly key: string | number;
   readonly subTitle: string;
   readonly onClick: () => void;
 }
 
-export function Card({ btnText, cardTitle, imgUrl, key, subTitle, onClick }: CardProps) {
+export function Card({ btnText, cardTitle, imgUrl, subTitle, onClick }: CardProps) {
   return (
-    <div key={key} className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
         <img src={imgUrl} alt="ytc-thumbnail" />
       </figure>
