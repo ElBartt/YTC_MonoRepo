@@ -9,6 +9,6 @@ export const videoListRoutes: RouteObject[] = [
   },
   {
     path: '/videos/:id',
-    element: <YtcFrontVideoVideoDetailsFeature />,
+    element: <YtcFrontVideoVideoDetailsFeature video={{id:"123", title:"Video", date:"2023-01-01", channel_id:"456" }} />,
   },
 ];

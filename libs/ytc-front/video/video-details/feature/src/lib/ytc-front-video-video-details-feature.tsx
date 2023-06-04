@@ -1,7 +1,10 @@
 import { CommentList } from '@org/ytc-front/shared/comment/feature';
+import { VideoType } from '@org/ytc-front/shared/video/util';
 
 /* eslint-disable-next-line */
-export interface YtcFrontVideoVideoDetailsFeatureProps {}
+export interface YtcFrontVideoVideoDetailsFeatureProps {
+  video: VideoType;
+}
 
 export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetailsFeatureProps) {
   /*
@@ -12,12 +15,41 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
       {/* call <Video><Stats><CommentList> */}
       <CommentList
         video={{
-          id: '123',
-          title: 'My Video',
-          date: '2022-01-01',
-          channel_id: '456',
+          id: props.video.id,
+          title: props.video.title,
+          date: props.video.date,
+          channel_id: props.video.channel_id,
         }}
       ></CommentList>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="stats stats-vertical shadow">
+          <div className="stat">
+            <div className="stat-title">Downloads</div>
+            <div className="stat-value">31K</div>
+            <div className="stat-desc">Jan 1st - Feb 1st</div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-title">New Users</div>
+            <div className="stat-value">4,200</div>
+            <div className="stat-desc">↗︎ 400 (22%)</div>
+          </div>
+
+          <div className="stat">
+            <div className="stat-title">New Registers</div>
+            <div className="stat-value">1,200</div>
+            <div className="stat-desc">↘︎ 90 (14%)</div>
+          </div>
+        </div>
+
+        <div className="card-body">
+          <h2 className="card-title">John Doe</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Answer</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
