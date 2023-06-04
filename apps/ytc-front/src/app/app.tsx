@@ -1,9 +1,25 @@
 import { YtcFrontHomepageFeatureShell } from '@org/ytc-front/homepage/feature-shell';
+import { useEffect, useState } from 'react';
 
 export function App() {
+  const [theme, setTheme] = useState('night');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'night' ? 'emerald' : 'night');
+  };
+
+  useEffect(() => {
+    document?.querySelector('html')?.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
     <div>
-      <h1>App YTC Front works</h1>
+      <div className="form-control w-52">
+        <label className="cursor-pointer label">
+          <span className="label-text">Toggle theme</span>
+          <input onClick={toggleTheme} type="checkbox" className="toggle" />
+        </label>
+      </div>
       <YtcFrontHomepageFeatureShell></YtcFrontHomepageFeatureShell>
     </div>
   );
