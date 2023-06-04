@@ -1,4 +1,4 @@
-import { Button } from '@org/shared/ui-components';
+import { Card } from '@org/shared/ui-components';
 import { VideoType } from '@org/ytc-front/shared/video/util';
 import { getVideoList } from '@org/ytc-front/video-list/data-access';
 import { format, parseISO } from 'date-fns';
@@ -21,25 +21,16 @@ export function YtcFrontVideoListFeature(props: YtcFrontVideoListFeatureProps) {
       <h1>A page to see your Youtube videos!</h1>
       {videoList.map((video: VideoType) => {
         return (
-          <div key={video.id} className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure>
-              <img src="https://miro.medium.com/v2/resize:fit:1200/0*nmHC1101iCu3OtYU" alt="NOP" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{video.title}</h2>
-              <p>{format(parseISO(video.date), 'MM/dd/yyyy')}</p>
-              <div className="card-actions justify-end">
-                <Button
-                  onClick={() => {
-                    return;
-                  }}
-                  buttonType="btn-primary"
-                >
-                  Check comments
-                </Button>
-              </div>
-            </div>
-          </div>
+          <Card
+            key={video.id}
+            btnText={'Check comments'}
+            cardTitle={video.title}
+            imgUrl={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+            subTitle={format(parseISO(video.date), 'MM/dd/yyyy')}
+            onClick={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          ></Card>
         );
       })}
     </div>
