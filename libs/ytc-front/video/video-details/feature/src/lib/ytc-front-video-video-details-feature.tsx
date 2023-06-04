@@ -1,3 +1,5 @@
+import { CommentList } from '@org/ytc-front/shared/comment/feature';
+
 /* eslint-disable-next-line */
 export interface YtcFrontVideoVideoDetailsFeatureProps {}
 
@@ -8,7 +10,14 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
   return (
     <div>
       {/* call <Video><Stats><CommentList> */}
-      <h1>Welcome to YtcFrontVideoVideoDetailsFeature!</h1>
+      <CommentList
+        video={{
+          id: '123',
+          title: 'My Video',
+          date: '2022-01-01',
+          channel_id: '456',
+        }}
+      ></CommentList>
     </div>
   );
 }
