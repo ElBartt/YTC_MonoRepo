@@ -6,7 +6,7 @@ export function YtcFrontHomepageFeature() {
 
   return (
     <>
-      <h1>Welcome to YtcFrontHomepageFeatureShell!</h1>
+      <h1>Welcome to Ytc, use your credentials to login</h1>
       <Button buttonType="btn-accent" onClick={() => navigate('videos')}>
         Login
       </Button>
