@@ -17,20 +17,22 @@ export function YtcFrontVideoListFeature() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>A page to see your Youtube videos!</h1>
-      {videoList.map((video: VideoType) => {
-        return (
-          <Card
-            key={video.id}
-            btnText={'Check comments'}
-            cardTitle={video.title}
-            imgUrl={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
-            subTitle={format(parseISO(video.date), 'MM/dd/yyyy')}
-            onClick={() => navigate(`${video.id}`)}
-          ></Card>
-        );
-      })}
-    </div>
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-5">
+        {videoList.map((video: VideoType) => {
+          return (
+            <Card
+              key={video.id}
+              btnText="Check details"
+              cardTitle={video.title}
+              imgUrl={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+              subTitle={format(parseISO(video.date), 'MM/dd/yyyy')}
+              onClick={() => navigate(`${video.id}`)}
+            ></Card>
+          );
+        })}
+      </div>
+    </>
   );
 }

@@ -13,12 +13,14 @@ export function App() {
   }, [theme]);
 
   return (
-    <div>
-      <div className="form-control w-52">
-        <label className="cursor-pointer label">
-          <span className="label-text">Toggle theme</span>
-          <input onClick={toggleTheme} type="checkbox" className="toggle" />
-        </label>
+    <div className="">
+      <div className="border-b border-primary flex w-100 justify-end">
+        <div className="form-control w-40 py-2">
+          <label className="cursor-pointer label">
+            <span className="label-text">Toggle theme</span>
+            <input onClick={toggleTheme} type="checkbox" className="toggle" />
+          </label>
+        </div>
       </div>
       <YtcFrontHomepageFeatureShell></YtcFrontHomepageFeatureShell>
     </div>
