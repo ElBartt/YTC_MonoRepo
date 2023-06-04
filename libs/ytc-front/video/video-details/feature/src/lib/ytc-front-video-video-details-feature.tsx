@@ -31,6 +31,7 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
   return (
     <div>
       {/* call <Video><Stats><CommentList> */}
+      {/* replace by card element from shared/ui-components */}
       <CommentList
         video={{
           id: props.video.id,

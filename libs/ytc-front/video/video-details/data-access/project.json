@@ -3,7 +3,7 @@
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ytc-front/video/video-details/data-access/src",
   "projectType": "library",
-  "tags": ["scope:video-details", "type:data-access"],
+  "tags": ["scope:ytc-front", "type:data-access"],
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
