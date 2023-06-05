@@ -31,14 +31,23 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
     <div>
       {/* call <Video><Stats><CommentList> */}
       {/* replace by card element from shared/ui-components */}
-      <CommentList
+      {/*<CommentList
         video={{
           id: props.video.id,
           title: props.video.title,
           date: props.video.date,
           channel_id: props.video.channel_id,
         }}
-      ></CommentList>
+      ></CommentList>*/}
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title">{props.video.title}</h2>
+          <p>{props.video.date}</p>
+        </div>
+        <figure>
+          <img src={`https://i.ytimg.com/vi/${props.video.id}/maxresdefault.jpg`} alt="Shoes" />
+        </figure>
+      </div>
 
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="stats stats-vertical shadow">
