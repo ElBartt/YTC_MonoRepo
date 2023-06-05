@@ -19,6 +19,7 @@
       "@org/ytc-front/homepage/feature": ["libs/ytc-front/homepage/feature/src/index.ts"],
       "@org/ytc-front/homepage/feature-shell": ["libs/ytc-front/homepage/feature-shell/src/index.ts"],
       "@org/ytc-front/shared/comment/feature": ["libs/ytc-front/shared/comment/feature/src/index.ts"],
+      "@org/ytc-front/shared/comment/ui": ["libs/ytc-front/shared/comment/ui/src/index.ts"],
       "@org/ytc-front/shared/comment/utils": ["libs/ytc-front/shared/comment/utils/src/index.ts"],
       "@org/ytc-front/shared/video/util": ["libs/ytc-front/shared/video/util/src/index.ts"],
       "@org/ytc-front/video/video-details/data-access": ["libs/ytc-front/video/video-details/data-access/src/index.ts"],

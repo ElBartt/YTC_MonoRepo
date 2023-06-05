@@ -10,35 +10,19 @@ export interface YtcFrontVideoVideoDetailsFeatureProps {
 }
 
 export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetailsFeatureProps) {
-  const [showCommentReply, SetShowCommentReply] = useState(false);
-  const [, setCommentList] = useState<CommentType[]>([]);
+  const [commentList, setCommentList] = useState<CommentType[]>([]);
 
   useEffect(() => {
-    getCommentList().subscribe((commentList: CommentType[]) => {
-      setCommentList(commentList);
+    getCommentList().subscribe((comList: CommentType[]) => {
+      setCommentList(comList);
     });
   }, []);
-
-  function handleShowComment() {
-    SetShowCommentReply(!showCommentReply);
-    console.log('show comment ' + showCommentReply);
-  }
 
   /*
   TODO : All the page for the video details (comments, video, stats)
   */
   return (
     <div>
-      {/* call <Video><Stats><CommentList> */}
-      {/* replace by card element from shared/ui-components */}
-      {/*<CommentList
-        video={{
-          id: props.video.id,
-          title: props.video.title,
-          date: props.video.date,
-          channel_id: props.video.channel_id,
-        }}
-      ></CommentList>*/}
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{props.video.title}</h2>
@@ -69,7 +53,7 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
             <div className="stat-desc">↘︎ 90 (14%)</div>
           </div>
         </div>
-        <CommentList comments={[]}></CommentList>
+        <CommentList comments={commentList}></CommentList>
       </div>
     </div>
   );
