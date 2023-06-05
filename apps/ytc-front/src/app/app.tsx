@@ -14,7 +14,7 @@ export function App() {
 
   return (
     <div className="">
-      <div className="border-b border-primary flex w-100 justify-end">
+      <div className="mb-5 border-b border-primary flex w-100 justify-end">
         <div className="form-control w-40 py-2">
           <label className="cursor-pointer label">
             <span className="label-text">Toggle theme</span>
@@ -22,7 +22,9 @@ export function App() {
           </label>
         </div>
       </div>
-      <YtcFrontHomepageFeatureShell></YtcFrontHomepageFeatureShell>
+      <div className="px-4">
+        <YtcFrontHomepageFeatureShell></YtcFrontHomepageFeatureShell>
+      </div>
     </div>
   );
 }
