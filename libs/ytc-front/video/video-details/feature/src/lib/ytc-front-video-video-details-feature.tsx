@@ -69,26 +69,7 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
             <div className="stat-desc">↘︎ 90 (14%)</div>
           </div>
         </div>
-        <div className="card-body">
-          <h2 className="card-title">John Doe</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary" onClick={handleShowComment}>
-              Answer
-            </button>
-          </div>
-          {showCommentReply && (
-            <div>
-              <div className="card-actions justify-end">
-                <textarea
-                  placeholder="Type your answer..."
-                  className="textarea textarea-bordered textarea-xs w-full max-w-xs"
-                ></textarea>
-                <button className="btn btn-primary">Send</button>
-              </div>
-            </div>
-          )}
-        </div>
+        <CommentList comments={[]}></CommentList>
       </div>
     </div>
   );

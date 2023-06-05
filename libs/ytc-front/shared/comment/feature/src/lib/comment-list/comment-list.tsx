@@ -1,23 +1,38 @@
-import { VideoType } from '@org/ytc-front/shared/video/util';
-import styles from './comment-list.module.css';
+import { useState } from 'react';
+import { CommentType } from '@org/ytc-front/shared/comment/utils';
 
-/* eslint-disable-next-line */
 export interface CommentListProps {
-  video: VideoType;
+  comments: CommentType[];
 }
 
 export function CommentList(props: CommentListProps) {
+  const [showCommentReply, SetShowCommentReply] = useState(false);
+
+  function handleShowComment() {
+    SetShowCommentReply(!showCommentReply);
+    console.log('show comment ' + showCommentReply);
+  }
+
   return (
-    <div className={styles['container']}>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">{props.video.title}</h2>
-          <p>{props.video.date}</p>
+    <div className="card-body">
+          <h2 className="card-title">John Doe</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary" onClick={handleShowComment}>
+              Answer
+            </button>
+          </div>
+          {showCommentReply && (
+            <div>
+              <div className="card-actions justify-end">
+                <textarea
+                  placeholder="Type your answer..."
+                  className="textarea textarea-bordered textarea-xs w-full max-w-xs"
+                ></textarea>
+                <button className="btn btn-primary">Send</button>
+              </div>
+            </div>
+          )}
         </div>
-        <figure>
-          <img src="https://i.ytimg.com/vi/ByZRFhqORnA/maxresdefault.jpg" alt="Shoes" />
-        </figure>
-      </div>
-    </div>
   );
 }
