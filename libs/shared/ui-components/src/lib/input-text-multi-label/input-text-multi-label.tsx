@@ -1,9 +1,9 @@
 export interface InputTextMultiLabelProps {
-  readonly topLeftLabel?: string;
-  readonly topRightLabel?: string;
-  readonly bottomLeftLabel?: string;
-  readonly bottomRightLabel?: string;
-  readonly placeholder?: string;
+  readonly topLeftLabel?: string | null;
+  readonly topRightLabel?: string | null;
+  readonly bottomLeftLabel?: string | null;
+  readonly bottomRightLabel?: string | null;
+  readonly placeholder?: string | null;
   readonly styleInput?:
     | 'input-primary '
     | 'input-accent'

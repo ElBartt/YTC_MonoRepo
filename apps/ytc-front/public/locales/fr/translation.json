@@ -1,0 +1,14 @@
+{
+  "app": {
+    "toggleTheme": "Changer le thème",
+    "welcomeMsg": "Bienvenue sur YTC",
+    "login": "Se connecter",
+    "inputPlaceholder": "Ecrire ici ..."
+  },
+  "homepage": {
+    "labelInputApiKey": "Saisir votre clé d'API ici"
+  },
+  "video": {
+    "btnCardVideo": "Voir détails"
+  }
+}

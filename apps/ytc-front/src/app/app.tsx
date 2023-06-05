@@ -1,7 +1,10 @@
 import { YtcFrontHomepageFeatureShell } from '@org/ytc-front/homepage/feature-shell';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-export function App() {
+function App() {
+  const { t } = useTranslation();
+
   const [theme, setTheme] = useState('night');
 
   const toggleTheme = () => {
@@ -17,7 +20,7 @@ export function App() {
       <div className="mb-5 border-b border-primary flex w-100 justify-end">
         <div className="form-control w-40 py-2">
           <label className="cursor-pointer label">
-            <span className="label-text">Toggle theme</span>
+            <span className="label-text">{t('app.toggleTheme')}</span>
             <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </label>
         </div>
@@ -29,4 +32,10 @@ export function App() {
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+    <Suspense fallback="...is loading">
+      <App />
+    </Suspense>
+  );
+}

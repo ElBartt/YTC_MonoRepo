@@ -1,8 +1,8 @@
 import { CommentList } from '@org/ytc-front/shared/comment/feature';
+import { CommentType } from '@org/ytc-front/shared/comment/utils';
 import { VideoType } from '@org/ytc-front/shared/video/util';
+import { getCommentList } from '@org/ytc-front/video/video-details/data-access';
 import { useEffect, useState } from 'react';
-import {CommentType} from '@org/ytc-front/shared/comment/utils';
-import {getCommentList} from '@org/ytc-front/video/video-details/data-access';
 
 /* eslint-disable-next-line */
 export interface YtcFrontVideoVideoDetailsFeatureProps {
@@ -11,14 +11,13 @@ export interface YtcFrontVideoVideoDetailsFeatureProps {
 
 export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetailsFeatureProps) {
   const [showCommentReply, SetShowCommentReply] = useState(false);
-  const [commentList, setCommentList] = useState<CommentType[]>([]);
+  const [, setCommentList] = useState<CommentType[]>([]);
 
   useEffect(() => {
     getCommentList().subscribe((commentList: CommentType[]) => {
       setCommentList(commentList);
     });
   }, []);
-
 
   function handleShowComment() {
     SetShowCommentReply(!showCommentReply);

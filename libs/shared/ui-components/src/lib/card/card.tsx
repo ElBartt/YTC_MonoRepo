@@ -1,7 +1,7 @@
 import { Button } from '../button/button';
 
 export interface CardProps {
-  readonly btnText: string;
+  readonly btnText: string | null;
   readonly cardTitle: string;
   readonly imgUrl: string;
   readonly subTitle: string;
@@ -19,7 +19,7 @@ export function Card({ btnText, cardTitle, imgUrl, subTitle, onClick }: CardProp
         <p>{subTitle}</p>
         <div className="card-actions justify-end">
           <Button onClick={() => onClick()} buttonType="btn-primary">
-            {btnText}
+            {btnText ?? ''}
           </Button>
         </div>
       </div>
