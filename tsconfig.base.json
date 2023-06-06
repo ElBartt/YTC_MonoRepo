@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@org/shared/mock-backend/utils": ["libs/shared/mock-backend/utils/src/index.ts"],
       "@org/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
+      "@org/shared/users/data-access": ["libs/shared/users/data-access/src/index.ts"],
+      "@org/shared/users/util": ["libs/shared/users/util/src/index.ts"],
       "@org/ytc-front/homepage/feature": ["libs/ytc-front/homepage/feature/src/index.ts"],
       "@org/ytc-front/homepage/feature-shell": ["libs/ytc-front/homepage/feature-shell/src/index.ts"],
       "@org/ytc-front/shared/comment/feature": ["libs/ytc-front/shared/comment/feature/src/index.ts"],
