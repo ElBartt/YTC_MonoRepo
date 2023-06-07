@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { NavigateFunction, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export function YtcFrontVideoListFeature() {
-  console.log(useParams());
   const { id } = useParams();
   const { apiKey } = useLocation().state;
   const { t } = useTranslation();

@@ -11,8 +11,6 @@ export function ChannelList(): JSX.Element {
 
   const { user, apiKey } = useLocation().state;
 
-  console.log(apiKey);
-
   const [channelListValue, setChannelListValue] = useState<ChannelType[]>([]);
 
   const handleChannelClick = (channelId: string) => {
