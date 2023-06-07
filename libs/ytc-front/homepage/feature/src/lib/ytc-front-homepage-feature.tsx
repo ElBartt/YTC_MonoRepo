@@ -1,4 +1,3 @@
-import { MOCK_API_KEY } from '@org/shared/mock-backend/utils';
 import { Button, InputTextMultiLabel } from '@org/shared/ui-components';
 import { getUser } from '@org/shared/users/data-access';
 import { useState } from 'react';
@@ -16,14 +15,20 @@ export function YtcFrontHomepageFeature() {
   };
 
   const handleClick = (): void => {
-    // TODO: Remove this its just for dev purpose
-    getUser(inputValue || MOCK_API_KEY).subscribe(user => {
-      if (user) {
-        navigate('channels', { state: { user, apiKey: inputValue || MOCK_API_KEY } });
-      } else {
-        console.log('No user found');
-      }
-    });
+    getUser(import.meta.env.DEV && inputValue === '' ? import.meta.env.VITE_APP_API_KEY_MASTU : inputValue).subscribe(
+      user => {
+        if (user) {
+          navigate('channels', {
+            state: {
+              user,
+              apiKey: import.meta.env.DEV && inputValue === '' ? import.meta.env.VITE_APP_API_KEY_MASTU : inputValue,
+            },
+          });
+        } else {
+          console.log('No user found');
+        }
+      },
+    );
   };
 
   return (
@@ -34,7 +39,7 @@ export function YtcFrontHomepageFeature() {
         placeholder={t('app.inputPlaceholder')}
         styleInput="input-primary"
         onInputChange={handleInputChange}
-        defaultValue={MOCK_API_KEY}
+        defaultValue={import.meta.env.DEV && inputValue === '' ? import.meta.env.VITE_APP_API_KEY_MASTU : inputValue}
       />
       <Button buttonType="btn-primary" customStyle="w-fit" onClick={handleClick}>
         {t('app.login')}

@@ -1,12 +1,11 @@
 import { ChannelSchema, ChannelType } from '@org/ytc-front/channel/util';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
-import { MOCK_API_URL } from '@org/shared/mock-backend/utils';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HTTP_METHOD, ROUTES } from '@org/shared/ytc-front/routes/util';
 
 export function getChannelList(userId: number, apiKey: string): Observable<ChannelType[]> {
   return ajax<ChannelType[]>({
-    url: `${MOCK_API_URL}/${ROUTES.CHANNELS}?${ROUTES.pUserId}=${userId}`,
+    url: `${import.meta.env.VITE_APP_BACK_END_URL}/${ROUTES.CHANNELS}?${ROUTES.pUserId}=${userId}`,
     method: HTTP_METHOD.GET,
     headers: {
       'Content-Type': 'application/json',

@@ -7,12 +7,12 @@ import { useLocation, useParams } from 'react-router-dom';
 
 export function YtcFrontVideoVideoDetailsFeature() {
   const { id } = useParams();
-  const { video } = useLocation().state;
+  const { video, apiKey } = useLocation().state;
   const [commentList, setCommentList] = useState<CommentType[]>([]);
 
   useEffect(() => {
     id &&
-      getCommentList(id).subscribe((comList: CommentType[]) => {
+      getCommentList(id, apiKey).subscribe((comList: CommentType[]) => {
         setCommentList(comList);
       });
   }, []);

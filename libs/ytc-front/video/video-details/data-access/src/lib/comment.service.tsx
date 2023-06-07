@@ -1,16 +1,15 @@
-import { MOCK_API_KEY, MOCK_API_URL } from '@org/shared/mock-backend/utils';
 import { CommentSchema, CommentType } from '@org/ytc-front/shared/comment/utils';
 import { map, Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { HTTP_METHOD, ROUTES } from '@org/shared/ytc-front/routes/util';
 
-export function getCommentList(videoId: string): Observable<CommentType[]> {
+export function getCommentList(videoId: string, apiKey: string): Observable<CommentType[]> {
   return ajax<CommentType[]>({
-    url: `${MOCK_API_URL}/${ROUTES.COMMENTS}?${ROUTES.pVideoId}=${videoId}`,
+    url: `${import.meta.env.VITE_APP_BACK_END_URL}/${ROUTES.COMMENTS}?${ROUTES.pVideoId}=${videoId}`,
     method: HTTP_METHOD.GET,
     headers: {
       'Content-Type': 'application/json',
-      'api-key': MOCK_API_KEY,
+      'api-key': apiKey,
     },
   }).pipe(
     map(({ response }: AjaxResponse<CommentType[]>) => {

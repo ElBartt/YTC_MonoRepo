@@ -11,10 +11,12 @@ export function ChannelList(): JSX.Element {
 
   const { user, apiKey } = useLocation().state;
 
+  console.log(apiKey);
+
   const [channelListValue, setChannelListValue] = useState<ChannelType[]>([]);
 
   const handleChannelClick = (channelId: string) => {
-    navigate(`/videos/${channelId}`);
+    navigate(`/videos/${channelId}`, { state: { apiKey } });
   };
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export function ChannelList(): JSX.Element {
       getChannelList(user.id, apiKey).subscribe((channelList: ChannelType[]) => {
         setChannelListValue(channelList);
         if (channelList.length === 1) {
-          navigate(`/videos/${channelList[0].id}`);
+          navigate(`/videos/${channelList[0].id}`, { state: { apiKey } });
         }
       });
   }, []);
