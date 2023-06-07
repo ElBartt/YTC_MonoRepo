@@ -1,12 +1,13 @@
 import { MOCK_API_URL } from '@org/shared/mock-backend/utils';
 import { UserSchema, UserType } from '@org/shared/users/util';
-import { Observable, catchError, map, of } from 'rxjs';
-import { AjaxResponse, ajax } from 'rxjs/ajax';
+import { catchError, map, Observable, of } from 'rxjs';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { HTTP_METHOD, ROUTES } from '@org/shared/ytc-front/routes/util';
 
 export function getUser(apiKey: string): Observable<UserType> {
   return ajax<UserType>({
-    url: `${MOCK_API_URL}/users?apikey=${apiKey}`,
-    method: 'GET',
+    url: `${MOCK_API_URL}/${ROUTES.USERS}?${ROUTES.pApiKey}=${apiKey}`,
+    method: HTTP_METHOD.GET,
     headers: {
       'Content-Type': 'application/json',
     },
