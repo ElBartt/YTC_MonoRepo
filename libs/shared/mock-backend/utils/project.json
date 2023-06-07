@@ -3,18 +3,27 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/mock-backend/utils/src",
   "projectType": "library",
-  "tags": ["scope:ytc-front", "type:util"],
+  "tags": [
+    "scope:shared",
+    "type:util"
+  ],
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/shared/mock-backend/utils/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/shared/mock-backend/utils/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/shared/mock-backend/utils"],
+      "outputs": [
+        "coverage/libs/shared/mock-backend/utils"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../../../coverage/libs/shared/mock-backend/utils"

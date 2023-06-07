@@ -1,21 +1,20 @@
 import { CommentList } from '@org/ytc-front/shared/comment/feature';
 import { CommentType } from '@org/ytc-front/shared/comment/utils';
-import { VideoType } from '@org/ytc-front/shared/video/util';
 import { getCommentList } from '@org/ytc-front/video/video-details/data-access';
+import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-export interface YtcFrontVideoVideoDetailsFeatureProps {
-  video: VideoType;
-}
-
-export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetailsFeatureProps) {
+export function YtcFrontVideoVideoDetailsFeature() {
+  const { id } = useParams();
+  const { video } = useLocation().state;
   const [commentList, setCommentList] = useState<CommentType[]>([]);
 
   useEffect(() => {
-    getCommentList().subscribe((comList: CommentType[]) => {
-      setCommentList(comList);
-    });
+    id &&
+      getCommentList(id).subscribe((comList: CommentType[]) => {
+        setCommentList(comList);
+      });
   }, []);
 
   /*
@@ -25,11 +24,11 @@ export function YtcFrontVideoVideoDetailsFeature(props: YtcFrontVideoVideoDetail
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">{props.video.title}</h2>
-          <p>{props.video.date}</p>
+          <h2 className="card-title">{video.title}</h2>
+          <p>{format(parseISO(video.date), 'MM/dd/yyyy')}</p>
         </div>
         <figure>
-          <img src={`https://i.ytimg.com/vi/${props.video.id}/maxresdefault.jpg`} alt="Shoes" />
+          <img src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt="Shoes" />
         </figure>
       </div>
 

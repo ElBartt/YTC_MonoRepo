@@ -1,0 +1,24 @@
+{
+  "name": "ytc-front-channel-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ytc-front/channel/data-access/src",
+  "projectType": "library",
+  "tags": ["scope:ytc-front", "type:data-access"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ytc-front/channel/data-access/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/libs/ytc-front/channel/data-access"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../../coverage/libs/ytc-front/channel/data-access"
+      }
+    }
+  }
+}

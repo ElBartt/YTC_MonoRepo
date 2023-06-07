@@ -4,18 +4,20 @@ import { getVideoList } from '@org/ytc-front/video/video-list/data-access';
 import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
 
 export function YtcFrontVideoListFeature() {
+  const { id } = useParams();
   const { t } = useTranslation();
   const [videoList, setVideoList] = useState<VideoType[]>([]);
 
   const navigate: NavigateFunction = useNavigate();
 
   useEffect(() => {
-    getVideoList().subscribe((videosList: VideoType[]) => {
-      setVideoList(videosList);
-    });
+    id &&
+      getVideoList(id).subscribe((videosList: VideoType[]) => {
+        setVideoList(videosList);
+      });
   }, []);
 
   return (
@@ -28,7 +30,7 @@ export function YtcFrontVideoListFeature() {
             cardTitle={video.title}
             imgUrl={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
             subTitle={format(parseISO(video.date), 'MM/dd/yyyy')}
-            onClick={() => navigate(`${video.id}`)}
+            onClick={() => navigate(`/videos/details/${video.id}`, { state: { video } })}
           ></Card>
         );
       })}

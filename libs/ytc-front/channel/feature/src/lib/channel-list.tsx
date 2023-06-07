@@ -1,0 +1,47 @@
+import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getChannelList } from '@org/ytc-front/channel/data-access';
+import { ChannelType } from '@org/ytc-front/channel/util';
+import { CardCentered } from '@org/shared/ui-components';
+import { useTranslation } from 'react-i18next';
+
+export function ChannelList(): JSX.Element {
+  const { t } = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
+
+  const { user, apiKey } = useLocation().state;
+
+  const [channelListValue, setChannelListValue] = useState<ChannelType[]>([]);
+
+  const handleChannelClick = (channelId: string) => {
+    navigate(`/videos/${channelId}`);
+  };
+
+  useEffect(() => {
+    user.id &&
+      getChannelList(user.id, apiKey).subscribe((channelList: ChannelType[]) => {
+        setChannelListValue(channelList);
+        if (channelList.length === 1) {
+          navigate(`/videos/${channelList[0].id}`);
+        }
+      });
+  }, []);
+
+  return (
+    <div className="flex justify-center self-center mx-auto">
+      <div className="grid sm:grid-cols-1 gap-x-16 md:grid-cols-2 xl:grid-cols-3 drop-shadow-2xl">
+        {channelListValue.map((channel: ChannelType) => {
+          return (
+            <CardCentered
+              key={channel.id}
+              cardTitle={channel.name}
+              imgUrl={channel.thumbnail}
+              btnText={t('channel.btnCardChannel')}
+              onClick={() => handleChannelClick(channel.id)}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}

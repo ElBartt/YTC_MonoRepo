@@ -19,7 +19,7 @@ export function YtcFrontHomepageFeature() {
     // TODO: Remove this its just for dev purpose
     getUser(inputValue || MOCK_API_KEY).subscribe(user => {
       if (user) {
-        navigate('videos');
+        navigate('channels', { state: { user, apiKey: inputValue || MOCK_API_KEY } });
       } else {
         console.log('No user found');
       }
@@ -27,7 +27,7 @@ export function YtcFrontHomepageFeature() {
   };
 
   return (
-    <div className="md:w-1/6 flex flex-col justify-center align self-center mx-auto">
+    <div className="md:w-1/6 flex flex-col justify-center self-center mx-auto">
       <h1 className="text-2xl font-bold">{t('app.welcomeMsg')}</h1>
       <InputTextMultiLabel
         topLeftLabel={t('homepage.labelInputApiKey')}

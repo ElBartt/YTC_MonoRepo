@@ -3,10 +3,7 @@ import { CommentSchema, CommentType } from '@org/ytc-front/shared/comment/utils'
 import { Observable, map } from 'rxjs';
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 
-// TODO: Move theses variables to a better place
-const videoId = '6nFlKS-15X8';
-
-export function getCommentList(): Observable<CommentType[]> {
+export function getCommentList(videoId: string): Observable<CommentType[]> {
   return ajax<CommentType[]>({
     url: `${MOCK_API_URL}/comments?videoId=${videoId}`,
     method: 'GET',

@@ -1,10 +1,11 @@
 import { MOCK_API_KEY, MOCK_API_URL } from '@org/shared/mock-backend/utils';
 import { VideoSchema, VideoType } from '@org/ytc-front/shared/video/util';
-import { Observable, map } from 'rxjs';
-import { AjaxResponse, ajax } from 'rxjs/ajax';
-export function getVideoList(): Observable<VideoType[]> {
+import { map, Observable } from 'rxjs';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
+
+export function getVideoList(channelId: string): Observable<VideoType[]> {
   return ajax<VideoType[]>({
-    url: `${MOCK_API_URL}/videos?channelId=UCAhaFPP6v3WCfK5Tjao0B7A`,
+    url: `${MOCK_API_URL}/videos?channelId=${channelId}`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
