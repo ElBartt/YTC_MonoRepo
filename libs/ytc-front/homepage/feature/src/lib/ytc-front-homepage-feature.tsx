@@ -1,5 +1,5 @@
-import { Button, InputTextMultiLabel } from '@org/shared/ui-components';
-import { getUser } from '@org/shared/users/data-access';
+import { Button, InputTextMultiLabel } from '@ytc/shared/ui-components';
+import { getUser } from '@ytc/shared/users/data-access';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavigateFunction, useNavigate } from 'react-router-dom';

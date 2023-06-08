@@ -1,7 +1,7 @@
-import { VideoSchema, VideoType } from '@org/ytc-front/shared/video/util';
+import { VideoSchema, VideoType } from '@ytc/ytc-front/shared/video/util';
 import { map, Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
-import { HTTP_METHOD, ROUTES } from '@org/shared/ytc-front/routes/util';
+import { HTTP_METHOD, ROUTES } from '@ytc/shared/ytc-front/routes/util';
 
 export function getVideoList(channelId: string, apiKey: string): Observable<VideoType[]> {
   return ajax<VideoType[]>({

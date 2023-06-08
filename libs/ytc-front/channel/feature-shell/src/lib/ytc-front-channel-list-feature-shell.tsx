@@ -1,5 +1,5 @@
 import { RouteObject } from 'react-router-dom';
-import { ChannelList } from '@org/ytc-front/channel/feature';
+import { ChannelList } from '@ytc/ytc-front/channel/feature';
 
 export const channelListRoutes: RouteObject[] = [
   {

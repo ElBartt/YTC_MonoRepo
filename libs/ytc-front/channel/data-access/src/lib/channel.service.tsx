@@ -1,7 +1,7 @@
-import { ChannelSchema, ChannelType } from '@org/ytc-front/channel/util';
+import { ChannelSchema, ChannelType } from '@ytc/ytc-front/channel/util';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { catchError, map, Observable, of } from 'rxjs';
-import { HTTP_METHOD, ROUTES } from '@org/shared/ytc-front/routes/util';
+import { HTTP_METHOD, ROUTES } from '@ytc/shared/ytc-front/routes/util';
 
 export function getChannelList(userId: number, apiKey: string): Observable<ChannelType[]> {
   return ajax<ChannelType[]>({

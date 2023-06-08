@@ -1,8 +1,8 @@
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getChannelList } from '@org/ytc-front/channel/data-access';
-import { ChannelType } from '@org/ytc-front/channel/util';
-import { CardCentered } from '@org/shared/ui-components';
+import { getChannelList } from '@ytc/ytc-front/channel/data-access';
+import { ChannelType } from '@ytc/ytc-front/channel/util';
+import { CardCentered } from '@ytc/shared/ui-components';
 import { useTranslation } from 'react-i18next';
 
 export function ChannelList(): JSX.Element {

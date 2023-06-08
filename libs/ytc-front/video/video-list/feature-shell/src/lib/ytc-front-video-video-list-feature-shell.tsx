@@ -1,5 +1,5 @@
-import { YtcFrontVideoVideoDetailsFeature } from '@org/ytc-front/video/video-details/feature';
-import { YtcFrontVideoListFeature } from '@org/ytc-front/video/video-list/feature';
+import { YtcFrontVideoVideoDetailsFeature } from '@ytc/ytc-front/video/video-details/feature';
+import { YtcFrontVideoListFeature } from '@ytc/ytc-front/video/video-list/feature';
 import { RouteObject } from 'react-router-dom';
 
 export const videoListRoutes: RouteObject[] = [

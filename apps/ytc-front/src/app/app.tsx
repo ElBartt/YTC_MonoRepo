@@ -1,4 +1,4 @@
-import { YtcFrontHomepageFeatureShell } from '@org/ytc-front/homepage/feature-shell';
+import { YtcFrontHomepageFeatureShell } from '@ytc/ytc-front/homepage/feature-shell';
 import { Suspense, useEffect, useState } from 'react';
 
 function App() {

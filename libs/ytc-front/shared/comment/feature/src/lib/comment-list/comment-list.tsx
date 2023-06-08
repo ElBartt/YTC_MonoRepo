@@ -1,5 +1,5 @@
-import { Comment } from '@org/ytc-front/shared/comment/ui';
-import { CommentType } from '@org/ytc-front/shared/comment/utils';
+import { Comment } from '@ytc/ytc-front/shared/comment/ui';
+import { CommentType } from '@ytc/ytc-front/shared/comment/utils';
 
 export interface CommentListProps {
   comments: CommentType[];
