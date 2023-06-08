@@ -5,12 +5,14 @@
 
 import { Request, Response } from 'express';
 import { CommentService } from '../services/comment.service';
+import { VideoService } from '../services/video.service';
 
 /**
  * Controller class for handling comments related API requests.
  */
 export class CommentController {
     private commentService: CommentService;
+    private videoService: VideoService;
 
     /**
      * Creates a new instance of the CommentController class.
@@ -18,39 +20,45 @@ export class CommentController {
      */
     constructor() {
         this.commentService = new CommentService();
+        this.videoService = new VideoService();
     }
 
     /**
-     * Retrieves comments for a given video ID and returns them in the response.
-     * If no comments are found, returns a 404 error.
-     * If an error occurs while fetching comments, returns a 500 error.
-     * @param req - The request object containing the videoId and forceRefresh query parameters.
-     * @param res - The response object to send the comments or error message.
+     * Handles GET requests to retrieve comments for a specific video.
+     * If the user is not an admin and the videoId is not associated with the user, returns a 401.
+     * If no comments are found for the videoId, returns a 404.
+     * Otherwise, sorts the comments by relevance and returns them in the response.
+     * @param req - The request object.
+     * @param res - The response object.
      * @returns Promise<void>
      */
     async getComments(req: Request, res: Response): Promise<void> {
         try {
-            // Get the videoId from the query string
-            const videoId: string | undefined = req.query?.videoId?.toString();
-
+            // Get the videoId from the query parameters
+            const videoId = req.query?.videoId?.toString();
             if (!videoId) {
                 res.status(400).send('Missing videoId parameter');
                 return;
             }
 
-            const forceRefresh: boolean = req.query?.forceRefresh === 'true';
-            
-            // Get the comments from the service
-            const comments = await this.commentService.GetComments(videoId, forceRefresh);
-            comments.sort(this.commentService.SortByRelevanceOrder);
+            // If the user is not an admin and the videoId is not associated with the user, return a 401
+            const reqUserId = req.user.id;
+            const isVideoIdAssociatedWithUser = await this.videoService.IsVideoIdAssociatedWithUserId(videoId, reqUserId);
+            if (!isVideoIdAssociatedWithUser && !req.user.is_admin) {
+                res.status(401).send('Unauthorized to access this resource');
+                return;
+            }
 
-            // If we don't have any comments, return a 404
-            if (comments.length === 0) {
+            // Get the comments for the videoId
+            const forceRefresh = req.query?.forceRefresh === 'true';
+            const comments = await this.commentService.GetComments(videoId, forceRefresh);
+            if (!comments || comments.length === 0) {
                 res.status(404).send('No comments found');
                 return;
             }
 
-            // Return the comments
+            // Sort the comments by relevance and return them in the response
+            comments.sort(CommentService.SortByRelevanceOrder);
             res.status(200).send(comments);
         } catch (error) {
             console.error(error);

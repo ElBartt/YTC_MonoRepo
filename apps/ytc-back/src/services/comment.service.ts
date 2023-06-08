@@ -152,7 +152,7 @@ export class CommentService {
      * @param b The second comment to compare.
      * @returns A number indicating the sort order.
      */
-    public SortByRelevanceOrder(a: Comment, b: Comment): number {
+    public static SortByRelevanceOrder(a: Comment, b: Comment): number {
         return a.relevance_order - b.relevance_order;
     }
 }

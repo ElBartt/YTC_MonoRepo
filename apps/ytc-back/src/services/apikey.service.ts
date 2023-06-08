@@ -36,7 +36,7 @@ export class ApiKeyService {
      * @param apiKey The API key to retrieve the user ID for.
      * @returns A Promise that resolves to the user ID associated with the API key, or undefined if the API key is invalid.
      */
-    async GetUserIdFromApiKey(apiKey: string): Promise<string | undefined> {
+    async GetUserIdFromApiKey(apiKey: string): Promise<number | undefined> {
         if (!apiKey) return undefined;
         const [key] = await this.db.query<ApiKey[]>("SELECT user_id FROM apikey WHERE `key` = ?", [apiKey]);
         return key?.user_id;

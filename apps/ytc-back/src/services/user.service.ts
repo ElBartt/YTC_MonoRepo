@@ -23,7 +23,7 @@ export class UserService {
      * @param userId The ID of the user to retrieve.
      * @returns A Promise that resolves to the User object if found, or undefined if not found.
      */
-    async GetUserFromId(userId: string): Promise<User | undefined> {
+    async GetUserFromId(userId: number): Promise<User | undefined> {
         if (!userId) return undefined;
         const users = await this.db.query<User[]>("SELECT * FROM user WHERE id = ? LIMIT 1", [userId]);
         return users.length === 0 ? undefined : users[0];

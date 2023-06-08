@@ -4,6 +4,7 @@
 */
 
 import { Request, Response } from 'express';
+import { ApiKeyService } from '../services/apikey.service';
 import { UserService } from '../services/user.service';
 
 /**
@@ -27,7 +28,7 @@ export class UserController {
      */
     async getUsers(req: Request, res: Response): Promise<void> {
         try {
-            const apikey: string | undefined = req.query?.apikey?.toString();
+            const apikey = req.query?.apikey?.toString();
 
             if (!apikey) {
                 res.status(400).send('Missing apikey parameter');
@@ -40,7 +41,7 @@ export class UserController {
                 res.status(404).send('No user found');
                 return;
             }
-            
+
             res.status(200).send(user);
         } catch (error) {
             console.error(error);

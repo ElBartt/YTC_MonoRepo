@@ -7,10 +7,10 @@
  * Represents an API key in the database.
  * @property {string} key - The API key.
  * @property {string} name - The name associated with the API key.
- * @property {string} user_id - The ID of the user that owns the API key.
+ * @property {number} user_id - The ID of the user that owns the API key.
  */
 export interface ApiKey {
     key: string;
     name: string;
-    user_id: string;
+    user_id: number;
 }

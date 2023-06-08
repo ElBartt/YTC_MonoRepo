@@ -5,12 +5,12 @@
 
 /**
  * Represents a User in the database.
- * @property {string} id - The ID of the user.
+ * @property {number} id - The ID of the user.
  * @property {string} username - The username of the user.
  * @property {boolean} is_admin - Whether or not the user is an admin.
  */
 export interface User {
-    id: string;
+    id: number;
     username: string;
     is_admin: boolean;
 }

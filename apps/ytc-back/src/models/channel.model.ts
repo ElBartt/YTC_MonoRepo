@@ -8,11 +8,11 @@
  * @property {string} id - The ID of the channel.
  * @property {string} name - The name of the channel.
  * @property {string} thumbnail - The URL of the channel's thumbnail.
- * @property {string} user_id - The ID of the user that owns the channel.
+ * @property {number} user_id - The ID of the user that owns the channel.
  */
 export interface Channel {
     id: string;
     name: string;
     thumbnail: string;
-    user_id: string;
+    user_id: number;
 }
