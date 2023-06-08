@@ -1,0 +1,606 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Youtube Moderation Helper API",
+        "version": "1.0.0",
+        "description": "API documentation for the Youtube Moderation Helper project (https://github.com/ElBartt/YTC)"
+    },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "api_key": []
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "summary": "Get user by apiKey [Will be deprecated]",
+                "description": "Retrieve user based on the provided apikey",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "apikey",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Api Key"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "1"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "Default"
+                                            },
+                                            "is_admin": {
+                                                "type": "boolean",
+                                                "example": "0"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing apikey parameter",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Missing userId parameter"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No channels found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "No user found"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "An error occurred while fetching videos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/channels": {
+            "get": {
+                "summary": "Get channels by userId",
+                "description": "Retrieve channels based on the provided userId",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "User ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "UCAhaFPP6v3WCfK5Tjao0B7A"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Mastu"
+                                            },
+                                            "thumbnail": {
+                                                "type": "string",
+                                                "example": "https://yt3.googleusercontent.com/ytc/AGIKgqMkGkUHOIjSOsjtXzN2dyO8PcfRcyWdQ9kJesPg2Q=s900-c-k-c0x00ffffff-no-rj"
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 2
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing user id parameter",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Missing userId parameter"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No channels found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "No channels found"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "An error occurred while fetching videos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/videos": {
+            "get": {
+                "summary": "Get videos by channelId",
+                "description": "Retrieve videos based on the provided channelId",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "channelId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Channel ID"
+                    },
+                    {
+                        "in": "query",
+                        "name": "forceRefresh",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "description": "Will force the database to update the videos for the provided videoId if set to true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "WxnaQurOmMA"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "example": "INTERROGATOIRE SOUS DÉTECTEUR DE MENSONGES #3 (Avec Michou)"
+                                            },
+                                            "date": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2023-06-03T09:02:00.000Z"
+                                            },
+                                            "channel_id": {
+                                                "type": "string",
+                                                "example": "UCAhaFPP6v3WCfK5Tjao0B7A"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing channelId parameter",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Missing channelId parameter"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No videos found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "No videos found"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "An error occurred while fetching videos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/comments": {
+            "get": {
+                "summary": "Get comments by videoId",
+                "description": "Retrieve comments based on the provided videoId",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "videoId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Video ID"
+                    },
+                    {
+                        "in": "query",
+                        "name": "forceRefresh",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "description": "Will force the database to update the comments for the provided videoId if set to true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "UgwLrdlPbCvfGBi5bjF4AaABAg"
+                                            },
+                                            "commenter": {
+                                                "type": "string",
+                                                "example": "Catsyth"
+                                            },
+                                            "comment": {
+                                                "type": "string",
+                                                "example": "Trop contente de te revoir Mastu ! Tu as l’air d’aller mieux ça fait plaisir ! Bon visionnage à ceux qui commencent la vidéo !"
+                                            },
+                                            "date": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2023-02-18T12:08:12.000Z"
+                                            },
+                                            "relevance_order": {
+                                                "type": "integer",
+                                                "example": 0
+                                            },
+                                            "like_count": {
+                                                "type": "integer",
+                                                "example": 8271
+                                            },
+                                            "reply_count": {
+                                                "type": "integer",
+                                                "example": 73
+                                            },
+                                            "gpt": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "unwanted": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "question": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "feedback": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "idea": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "collaboration": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "video_id": {
+                                                "type": "string",
+                                                "example": "6nFlKS-15X8"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing videoId parameter",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Missing videoId parameter"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No comments found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "No comments found"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "An error occurred while fetching comments"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stats": {
+            "get": {
+                "summary": "Get video statistics",
+                "description": "Retrieve statistics for a video or a channel based on the provided videoId or channelId",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "videoId",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Video ID"
+                    },
+                    {
+                        "in": "query",
+                        "name": "channelId",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Channel ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "totalComments": {
+                                            "type": "integer",
+                                            "example": 19
+                                        },
+                                        "totalUnwanted": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "totalQuestion": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "totalFeedback": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "totalIdea": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "totalCollaboration": {
+                                            "type": "integer",
+                                            "example": 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Missing videoId or channelId parameters"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "An error occurred while fetching videos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/most-accessed-routes": {
+            "get": {
+                "summary": "Get the most accessed routes [ADMIN]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/most-used-parameters": {
+            "get": {
+                "summary": "Get the most used parameters [ADMIN]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "parameter": {
+                                                "type": "string"
+                                            },
+                                            "count": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/error-count": {
+            "get": {
+                "summary": "Get the error count [ADMIN]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/average-response-time": {
+            "get": {
+                "summary": "Get the average response time [ADMIN]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/api-key-usage": {
+            "get": {
+                "summary": "Get the API key usage [ADMIN]",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "api_key": {
+                                                "type": "string"
+                                            },
+                                            "count": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
