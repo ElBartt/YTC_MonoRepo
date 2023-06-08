@@ -1,4 +1,4 @@
-import { UserSchema, UserType } from '@ytc/shared/users/util';
+import { UserSchema, UserType } from '@ytc/shared/models/util';
 import { catchError, map, Observable, of } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { HTTP_METHOD, ROUTES } from '@ytc/shared/ytc-front/routes/util';

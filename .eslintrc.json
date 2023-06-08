@@ -17,12 +17,16 @@
                 "onlyDependOnLibsWithTags": ["scope:ytc-front", "scope:shared"]
               },
               {
+                "sourceTag": "scope:ytc-back",
+                "onlyDependOnLibsWithTags": ["scope:ytc-back", "scope:shared"]
+              },
+              {
                 "sourceTag": "scope:shared",
                 "onlyDependOnLibsWithTags": ["scope:shared"]
               },
               {
                 "sourceTag": "type:app",
-                "onlyDependOnLibsWithTags": ["type:app", "type:feature"]
+                "onlyDependOnLibsWithTags": ["type:app", "type:feature", "type:util"]
               },
               {
                 "sourceTag": "type:feature",

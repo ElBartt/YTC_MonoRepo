@@ -1,4 +1,4 @@
-import { CommentType } from '@ytc/ytc-front/shared/comment/utils';
+import { CommentType as CommentType } from '@ytc/shared/models/util';
 
 export interface CommentProps {
   comment: CommentType;

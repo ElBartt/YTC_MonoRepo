@@ -1,4 +1,4 @@
-import { VideoSchema, VideoType } from '@ytc/ytc-front/shared/video/util';
+import { VideoSchema, VideoType } from '@ytc/shared/models/util';
 import { map, Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { HTTP_METHOD, ROUTES } from '@ytc/shared/ytc-front/routes/util';

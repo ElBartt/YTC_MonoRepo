@@ -1,4 +1,4 @@
-/* 
+/*
    This code is licensed under the Creative Commons Attribution-NonCommercial License (CC BY-NC).
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
@@ -6,7 +6,7 @@
 import { OkPacket } from 'mysql2';
 import { ParsedQs } from 'qs';
 import { Database } from '../database/database';
-import { ApiAnalytic } from '../models/apianalytic.model';
+import { ApiAnalytic } from "@ytc/shared/models/util";
 
 interface ParameterCount {
     parameter: string;

@@ -1,7 +1,7 @@
 {
-  "name": "shared-users-util",
+  "name": "shared-models-util",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/users/util/src",
+  "sourceRoot": "libs/shared/models/util/src",
   "projectType": "library",
   "tags": ["scope:shared", "type:util"],
   "targets": {
@@ -9,15 +9,15 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/shared/users/util/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/shared/models/util/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/shared/users/util"],
+      "outputs": ["coverage/libs/shared/models/util"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../../../coverage/libs/shared/users/util"
+        "reportsDirectory": "../../../../coverage/libs/shared/models/util"
       }
     }
   }
