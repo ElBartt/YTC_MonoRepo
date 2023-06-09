@@ -1,10 +1,10 @@
-/* 
+/*
    This code is licensed under the Creative Commons Attribution-NonCommercial License (CC BY-NC).
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
 import { Database } from '../database/database';
-import { ApiKey } from '../models/apikey.model';
+import { ApiKey } from "@ytc/shared/models/util";
 
 /**
  * A service for validating API keys.
@@ -30,7 +30,7 @@ export class ApiKeyService {
         const [key] = await this.db.query<ApiKey[]>("SELECT 1 FROM apikey WHERE `key` = ? LIMIT 1", [apiKey]);
         return !!key;
     }
-    
+
     /**
      * Retrieves the user ID associated with the given API key.
      * @param apiKey The API key to retrieve the user ID for.

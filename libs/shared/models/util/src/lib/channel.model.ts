@@ -1,7 +1,9 @@
-/* 
+/*
    This code is licensed under the Creative Commons Attribution-NonCommercial License (CC BY-NC).
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
+
+import { z } from 'zod';
 
 /**
  * Represents a YouTube channel in the database.
@@ -10,9 +12,11 @@
  * @property {string} thumbnail - The URL of the channel's thumbnail.
  * @property {number} user_id - The ID of the user that owns the channel.
  */
-export interface Channel {
-    id: string;
-    name: string;
-    thumbnail: string;
-    user_id: number;
-}
+export const ChannelSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  thumbnail: z.string(),
+  user_id: z.number(),
+});
+
+export type ChannelType = z.infer<typeof ChannelSchema>;

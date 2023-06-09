@@ -5,9 +5,9 @@
 
 import { OkPacket } from 'mysql2';
 import { Database } from '../database/database';
-import { Video } from '../models/video.model';
 import { ChannelService } from './channel.service';
 import { YoutubeAPIService } from './youtube.service';
+import { VideoType } from "@ytc/shared/models/util";
 
 /**
  * Service class for managing videos.
@@ -28,21 +28,21 @@ export class VideoService {
   /**
    * Retrieves all videos for a given channel from the database.
    * @param channelId The ID of the channel to retrieve videos for.
-   * @returns A promise that resolves to an array of Video objects.
+   * @returns A promise that resolves to an array of VideoType objects.
    */
-  async GetVideosForChannel(channelId: string): Promise<Video[]> {
+  async GetVideosForChannel(channelId: string): Promise<VideoType[]> {
     if (!channelId) return [];
-    return await this.db.query<Video[]>('SELECT * FROM videos WHERE channel_id = ?', [channelId]);
+    return await this.db.query<VideoType[]>('SELECT * FROM videos WHERE channel_id = ?', [channelId]);
   }
 
   /**
    * Retrieves a video from the database by its ID.
    * @param videoId The ID of the video to retrieve.
-   * @returns A promise that resolves to a Video object if the video is found, or undefined if it is not found.
+   * @returns A promise that resolves to a VideoType object if the video is found, or undefined if it is not found.
    */
-  async GetVideo(videoId: string): Promise<Video | undefined> {
+  async GetVideo(videoId: string): Promise<VideoType | undefined> {
     if (videoId === '') return undefined;
-    const videos = await this.db.query<Video[]>('SELECT * FROM videos WHERE id = ? LIMIT 1', [videoId]);
+    const videos = await this.db.query<VideoType[]>('SELECT * FROM videos WHERE id = ? LIMIT 1', [videoId]);
     return videos.length === 0 ? undefined : videos[0];
   }
 
@@ -50,9 +50,9 @@ export class VideoService {
    * Retrieves videos for a given channel from the database, or from the YouTube API if they are not found in the database.
    * @param channelId The ID of the channel to retrieve videos for.
    * @param forceRefresh If true, the videos will be retrieved from the YouTube API even if they are already in the database.
-   * @returns A promise that resolves to an array of Video objects.
+   * @returns A promise that resolves to an array of VideoType objects.
    */
-  async GetVideos(channelId: string, forceRefresh: boolean): Promise<Video[]> {
+  async GetVideos(channelId: string, forceRefresh: boolean): Promise<VideoType[]> {
     const channel = await this.channelService.GetChannel(channelId);
     if (!channel) return [];
 
@@ -66,11 +66,11 @@ export class VideoService {
     });
     if (!youtubeVideos?.items?.length) return [];
 
-    const dbVideos: Video[] = youtubeVideos.items
+    const dbVideos: VideoType[] = youtubeVideos.items
       .map(video => ({
         id: video.id?.videoId || '',
         title: video.snippet?.title || 'Unknown',
-        date: new Date(video.snippet?.publishedAt || ''),
+        date: video.snippet?.publishedAt || '',
         channel_id: channelId,
       }))
       .filter(video => video.id !== '');
@@ -82,13 +82,13 @@ export class VideoService {
 
   /**
    * Inserts a list of videos into the database, ignoring any duplicates.
-   * @param videoList An array of Video objects to insert into the database.
+   * @param videoList An array of VideoType objects to insert into the database.
    * @returns A promise that resolves to the number of rows affected by the insert operation.
    */
-  async InsertVideoList(videoList: Video[]): Promise<number> {
+  async InsertVideoList(videoList: VideoType[]): Promise<number> {
     if (videoList.length === 0) return 0;
 
-    const columns = Object.keys(videoList[0]) as Array<keyof Video>;
+    const columns = Object.keys(videoList[0]) as Array<keyof VideoType>;
     const sql = `INSERT IGNORE INTO videos (${columns.join(', ')}) VALUES ?`;
 
     const values = videoList.map(video => columns.map(column => video[column]));
@@ -116,7 +116,7 @@ export class VideoService {
   }
 
   // Predicate function for sorting videos by date.
-  public static SortVideosByDate(a: Video, b: Video): number {
-    return b.date.getTime() - a.date.getTime();
+  public static SortVideosByDate(a: VideoType, b: VideoType): number {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
   }
 }

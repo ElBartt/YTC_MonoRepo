@@ -1,6 +1,7 @@
 import { CommentList } from '@ytc/ytc-front/shared/comment/feature';
-import { CommentType } from '@ytc/ytc-front/shared/comment/utils';
 import { getCommentList } from '@ytc/ytc-front/video/video-details/data-access';
+import { CommentType } from '@ytc/shared/models/util';
+
 import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';

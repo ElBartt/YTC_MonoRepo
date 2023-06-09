@@ -1,13 +1,13 @@
-/* 
+/*
    This code is licensed under the Creative Commons Attribution-NonCommercial License (CC BY-NC).
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
-import { Comment } from "../models/comment.model";
 import { Stat } from "../types/interface";
 import { ChannelService } from "./channel.service";
 import { CommentService } from "./comment.service";
 import { VideoService } from "./video.service";
+import { CommentType } from "@ytc/shared/models/util";
 
 /**
  * Service for retrieving statistics for videos and channels.
@@ -64,7 +64,7 @@ export class StatService {
      * @param comments The list of comments to calculate statistics for.
      * @returns An object containing the total number of comments, spam comments, and responded comments for the video.
      */
-    private CalculateStats(comments: Comment[]): Stat {
+    private CalculateStats(comments: CommentType[]): Stat {
         const stats: Stat = {
             totalComments: comments.length,
             totalUnwanted: 0,
