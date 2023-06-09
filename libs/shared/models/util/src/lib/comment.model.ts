@@ -25,7 +25,7 @@ export const CommentSchema = z.object({
   id: z.string(),
   commenter: z.string(),
   comment: z.string(),
-  date: z.string().transform(str => new Date(str)),
+  date: z.string(),
   relevance_order: z.number().int(),
   like_count: z.number().int(),
   reply_count: z.number().int(),
