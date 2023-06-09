@@ -11,7 +11,7 @@ describe("CommentType", () => {
             id: "123",
             commenter: "John",
             comment: "Great video!",
-            date: new Date(),
+            date: "09/09/2021",
             relevance_order: 0,
             like_count: 0,
             reply_count: 0,
