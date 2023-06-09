@@ -3,10 +3,10 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![test](https://github.com/ElBartt/YTC/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ElBartt/YTC/actions/workflows/tests.yml) 
 
-![Statements](https://img.shields.io/badge/statements-7%25-red.svg?style=flat) 
-![Branches](https://img.shields.io/badge/branches-1.35%25-red.svg?style=flat) 
-![Functions](https://img.shields.io/badge/functions-6.81%25-red.svg?style=flat) 
-![Lines](https://img.shields.io/badge/lines-7.69%25-red.svg?style=flat)
+![Statements](https://img.shields.io/badge/statements-8.28%25-red.svg?style=flat) 
+![Branches](https://img.shields.io/badge/branches-1.7%25-red.svg?style=flat) 
+![Functions](https://img.shields.io/badge/functions-7.5%25-red.svg?style=flat) 
+![Lines](https://img.shields.io/badge/lines-9.34%25-red.svg?style=flat)
 
 # Table of contents
 - [Introduction](#introduction)

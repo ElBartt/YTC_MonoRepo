@@ -3,13 +3,11 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
-import { Channel } from "../../src/models/channel.model";
-import { Comment } from "../../src/models/comment.model";
-import { Video } from "../../src/models/video.model";
+import { ChannelType, CommentType, VideoType } from "@ytc/shared/models/util";
 
-describe("IComment", () => {
+describe("CommentType", () => {
     it("should have the correct properties", () => {
-        const comment: Comment = {
+        const comment: CommentType = {
             id: "123",
             commenter: "John",
             comment: "Great video!",
@@ -43,12 +41,12 @@ describe("IComment", () => {
     });
 });
 
-describe("IVideo", () => {
+describe("VideoType", () => {
     it("should have the correct properties", () => {
-        const video: Video = {
+        const video: VideoType = {
             id: "456",
             title: "This is a video",
-            date: new Date(),
+            date: "09/09/2021",
             channel_id: "789",
         };
 
@@ -59,13 +57,13 @@ describe("IVideo", () => {
     });
 });
 
-describe("IChannel", () => {
+describe("ChannelType", () => {
     it("should have the correct properties", () => {
-        const channel: Channel = {
+        const channel: ChannelType = {
             id: "789",
             name: "Example Channel",
             thumbnail: "https://example.com/channel.jpg",
-            user_id: "1",
+            user_id: 1,
         };
 
         expect(channel).toHaveProperty("id");
