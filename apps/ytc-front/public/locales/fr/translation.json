@@ -12,5 +12,8 @@
   },
   "video": {
     "btnCardVideo": "Voir détails"
+  },
+  "video-details": {
+    "publishedDate": "Publié le"
   }
 }
