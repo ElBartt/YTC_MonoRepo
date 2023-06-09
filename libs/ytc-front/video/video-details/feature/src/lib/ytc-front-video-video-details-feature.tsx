@@ -22,40 +22,20 @@ export function YtcFrontVideoVideoDetailsFeature() {
   TODO : All the page for the video details (comments, video, stats)
   */
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">{video.title}</h2>
-          <p>{format(parseISO(video.date), 'MM/dd/yyyy')}</p>
+    <>
+      <div className="flex justify-center mx-auto">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title">{video.title}</h2>
+            <p>{format(parseISO(video.date), 'MM/dd/yyyy')}</p>
+          </div>
+          <figure>
+            <img src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt="Shoes" />
+          </figure>
         </div>
-        <figure>
-          <img src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt="Shoes" />
-        </figure>
       </div>
-
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="stats stats-vertical shadow">
-          <div className="stat">
-            <div className="stat-title">Downloads</div>
-            <div className="stat-value">31K</div>
-            <div className="stat-desc">Jan 1st - Feb 1st</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-title">New Users</div>
-            <div className="stat-value">4,200</div>
-            <div className="stat-desc">↗︎ 400 (22%)</div>
-          </div>
-
-          <div className="stat">
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
-            <div className="stat-desc">↘︎ 90 (14%)</div>
-          </div>
-        </div>
-        <CommentList comments={commentList}></CommentList>
-      </div>
-    </div>
+      <CommentList comments={commentList}></CommentList>
+    </>
   );
 }
 

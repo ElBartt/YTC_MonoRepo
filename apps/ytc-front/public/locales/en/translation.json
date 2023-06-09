@@ -12,5 +12,8 @@
   },
   "video": {
     "btnCardVideo": "Check details"
+  },
+  "video-details": {
+    "publishedDate": "Published on"
   }
 }
