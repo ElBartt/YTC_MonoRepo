@@ -18,6 +18,6 @@ jobs:
       with:
         node-version: '16.x'
     - run: npm install
-    - run: npm run testNoCvg
+    - run: npm run back:test
       env:
         YT_API_KEY: ${{ secrets.YT_API_KEY }}
