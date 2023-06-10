@@ -4,7 +4,7 @@
 */
 
 import { Database } from '../database/database';
-import { ApiKey } from "@ytc/shared/models/util";
+import { ApiKey } from '@ytc/shared/models/util';
 
 /**
  * A service for validating API keys.
@@ -27,7 +27,7 @@ export class ApiKeyService {
      */
     async ValidateApiKey(apiKey: string): Promise<boolean> {
         if (!apiKey) return false;
-        const [key] = await this.db.query<ApiKey[]>("SELECT 1 FROM apikey WHERE `key` = ? LIMIT 1", [apiKey]);
+        const [key] = await this.db.query<ApiKey[]>('SELECT 1 FROM apikey WHERE `key` = ? LIMIT 1', [apiKey]);
         return !!key;
     }
 
@@ -38,7 +38,7 @@ export class ApiKeyService {
      */
     async GetUserIdFromApiKey(apiKey: string): Promise<number | undefined> {
         if (!apiKey) return undefined;
-        const [key] = await this.db.query<ApiKey[]>("SELECT user_id FROM apikey WHERE `key` = ?", [apiKey]);
+        const [key] = await this.db.query<ApiKey[]>('SELECT user_id FROM apikey WHERE `key` = ?', [apiKey]);
         return key?.user_id;
     }
 }

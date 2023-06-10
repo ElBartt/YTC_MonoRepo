@@ -3,10 +3,10 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
+import { ApiAnalytic } from '@ytc/shared/models/util';
 import { OkPacket } from 'mysql2';
 import { ParsedQs } from 'qs';
 import { Database } from '../database/database';
-import { ApiAnalytic } from "@ytc/shared/models/util";
 
 interface ParameterCount {
     parameter: string;
@@ -42,7 +42,9 @@ export class ApiAnalyticService {
     }
 
     async GetMostAccessedRoutes(): Promise<string[]> {
-        const rows = await this.db.query<RouteCount[]>('SELECT route, COUNT(*) AS count FROM apianalytics WHERE route != "" GROUP BY route ORDER BY count DESC LIMIT 10');
+        const rows = await this.db.query<RouteCount[]>(
+            'SELECT route, COUNT(*) AS count FROM apianalytics WHERE route != "" GROUP BY route ORDER BY count DESC LIMIT 10',
+        );
         return rows.map(row => row.route);
     }
 
@@ -50,12 +52,11 @@ export class ApiAnalyticService {
         const parameters = await this.db.query<string[]>('SELECT parameters FROM apianalytics');
 
         // for each rows, split the parameters string by '&' and filter out empty strings
-        parameters.filter((param: string) => param !== '')
-            .flatMap((param: string) => param.split('&'));
+        parameters.filter((param: string) => param !== '').flatMap((param: string) => param.split('&'));
 
         // for each parameter, split the parameter string by '=' and filter out empty strings
         const counts = parameters.reduce((acc: CountWithKey, param: string) => {
-            const [key, value] = param.split('=');
+            const [key] = param.split('=');
             acc[key] = (acc[key] || 0) + 1;
             return acc;
         }, {} as CountWithKey);

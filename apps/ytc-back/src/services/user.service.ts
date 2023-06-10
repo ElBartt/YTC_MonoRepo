@@ -3,9 +3,9 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
-import { Database } from "../database/database";
-import { ApiKeyService } from "./apikey.service";
-import {UserType} from "@ytc/shared/models/util";
+import { Database } from '../database/database';
+import { ApiKeyService } from './apikey.service';
+import { UserType } from '@ytc/shared/models/util';
 
 export class UserService {
     private db: Database;
@@ -25,7 +25,7 @@ export class UserService {
      */
     async GetUserFromId(userId: number): Promise<UserType | undefined> {
         if (!userId) return undefined;
-        const users = await this.db.query<UserType[]>("SELECT * FROM user WHERE id = ? LIMIT 1", [userId]);
+        const users = await this.db.query<UserType[]>('SELECT * FROM user WHERE id = ? LIMIT 1', [userId]);
         return users.length === 0 ? undefined : users[0];
     }
 

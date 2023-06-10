@@ -22,20 +22,20 @@ import { z } from 'zod';
  * @property {string} video_id - The ID of the video the comment belongs to.
  */
 export const CommentSchema = z.object({
-  id: z.string(),
-  commenter: z.string(),
-  comment: z.string(),
-  date: z.string(),
-  relevance_order: z.number().int(),
-  like_count: z.number().int(),
-  reply_count: z.number().int(),
-  gpt: z.string(),
-  unwanted: z.number().transform(data => !!data),
-  question: z.number().transform(data => !!data),
-  feedback: z.number().transform(data => !!data),
-  idea: z.number().transform(data => !!data),
-  collaboration: z.number().transform(data => !!data),
-  video_id: z.string(),
+    id: z.string(),
+    commenter: z.string(),
+    comment: z.string(),
+    date: z.string(),
+    relevance_order: z.number().int(),
+    like_count: z.number().int(),
+    reply_count: z.number().int(),
+    gpt: z.string(),
+    unwanted: z.number().transform(data => !!data),
+    question: z.number().transform(data => !!data),
+    feedback: z.number().transform(data => !!data),
+    idea: z.number().transform(data => !!data),
+    collaboration: z.number().transform(data => !!data),
+    video_id: z.string(),
 });
 
 export type CommentType = z.infer<typeof CommentSchema>;

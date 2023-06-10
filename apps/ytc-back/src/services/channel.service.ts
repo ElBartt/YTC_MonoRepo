@@ -3,8 +3,8 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
-import { Database } from "../database/database";
-import { ChannelType } from "@ytc/shared/models/util";
+import { Database } from '../database/database';
+import { ChannelType } from '@ytc/shared/models/util';
 
 export class ChannelService {
     private db: Database;
@@ -24,7 +24,7 @@ export class ChannelService {
      */
     async GetChannelsFromUserId(userId: number): Promise<ChannelType[]> {
         if (!userId) return [];
-        return await this.db.query<ChannelType[]>("SELECT * FROM channel WHERE user_id = ?", [userId]);
+        return await this.db.query<ChannelType[]>('SELECT * FROM channel WHERE user_id = ?', [userId]);
     }
 
     /**
@@ -34,7 +34,7 @@ export class ChannelService {
      */
     async GetChannel(channelId: string): Promise<ChannelType | undefined> {
         if (!channelId) return undefined;
-        const [channel] = await this.db.query<ChannelType[]>("SELECT * FROM channel WHERE id = ? LIMIT 1", [channelId]);
+        const [channel] = await this.db.query<ChannelType[]>('SELECT * FROM channel WHERE id = ? LIMIT 1', [channelId]);
         return channel;
     }
 
@@ -46,7 +46,10 @@ export class ChannelService {
      */
     async IsChannelIdAssociatedWithUserId(channelId: string, userId: number): Promise<boolean> {
         if (!channelId || !userId) return false;
-        const [channel] = await this.db.query<ChannelType[]>("SELECT * FROM channel WHERE id = ? AND user_id = ? LIMIT 1", [channelId, userId]);
+        const [channel] = await this.db.query<ChannelType[]>(
+            'SELECT * FROM channel WHERE id = ? AND user_id = ? LIMIT 1',
+            [channelId, userId],
+        );
         return channel !== undefined;
     }
 }

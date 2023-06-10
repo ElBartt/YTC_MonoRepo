@@ -5,7 +5,7 @@
 
 import { NextFunction, Request, Response } from 'express';
 import { ApiAnalyticService } from '../services/apianalytic.service';
-import { ApiAnalytic } from "@ytc/shared/models/util";
+import { ApiAnalytic } from '@ytc/shared/models/util';
 
 /**
  * Middleware function that sends API analytics to the database.
