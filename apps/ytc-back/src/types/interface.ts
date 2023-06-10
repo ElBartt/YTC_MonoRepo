@@ -24,29 +24,11 @@ export interface PaginationParams {
  * @property {number | null} pageInfo.resultsPerPage - The number of results per page.
  */
 export interface YoutubeFilteredResponse<T> {
-    items: T
-    nextPageToken?: string | null
-    prevPageToken?: string | null
+    items: T;
+    nextPageToken?: string | null;
+    prevPageToken?: string | null;
     pageInfo?: {
-        totalResults?: number | null
-        resultsPerPage?: number | null
-    }
-}
-
-/**
- * An interface representing statistics for a collection of comments.
- * @property {number} totalComments - The total number of comments.
- * @property {number} totalUnwanted - The total number of unwanted comments.
- * @property {number} totalQuestion - The total number of comments that ask a question.
- * @property {number} totalFeedback - The total number of comments that provide feedback.
- * @property {number} totalIdea - The total number of comments that suggest an idea.
- * @property {number} totalCollaboration - The total number of comments that suggest collaboration.
- */
-export interface Stat {
-    totalComments: number;
-    totalUnwanted: number;
-    totalQuestion: number;
-    totalFeedback: number;
-    totalIdea: number;
-    totalCollaboration: number;
+        totalResults?: number | null;
+        resultsPerPage?: number | null;
+    };
 }

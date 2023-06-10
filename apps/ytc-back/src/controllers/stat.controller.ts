@@ -3,11 +3,11 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
+import { StatisticsType } from '@ytc/shared/models/util';
 import { Request, Response } from 'express';
 import { ChannelService } from '../services/channel.service';
-import { StatService } from "../services/stat.service";
+import { StatService } from '../services/stat.service';
 import { VideoService } from '../services/video.service';
-import { Stat } from '../types/interface';
 
 /**
  * Controller class for handling requests related to video/channel statistics.
@@ -59,7 +59,7 @@ export class StatController {
                 return res.status(401).send('Unauthorized to access this resource');
             }
 
-            let stats: Stat | undefined;
+            let stats: StatisticsType | undefined;
 
             if (videoId) {
                 stats = await this.statService.GetStatsForVideo(videoId);

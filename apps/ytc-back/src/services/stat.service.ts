@@ -3,11 +3,10 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
-import { Stat } from "../types/interface";
-import { ChannelService } from "./channel.service";
-import { CommentService } from "./comment.service";
-import { VideoService } from "./video.service";
-import { CommentType } from "@ytc/shared/models/util";
+import { CommentType, StatisticsType } from '@ytc/shared/models/util';
+import { ChannelService } from './channel.service';
+import { CommentService } from './comment.service';
+import { VideoService } from './video.service';
 
 /**
  * Service for retrieving statistics for videos and channels.
@@ -31,7 +30,7 @@ export class StatService {
      * @param videoId The ID of the video to retrieve statistics for.
      * @returns A promise that resolves to an object containing the stats, or undefined if the video does not exist.
      */
-    async GetStatsForVideo(videoId: string): Promise<Stat | undefined> {
+    async GetStatsForVideo(videoId: string): Promise<StatisticsType | undefined> {
         const video = await this.videoService.GetVideo(videoId);
         if (!video) return undefined;
 
@@ -46,7 +45,7 @@ export class StatService {
      * @param channelId The ID of the channel to retrieve statistics for.
      * @returns A promise that resolves to an object containing the stats, or undefined if the channel does not exist.
      */
-    async GetStatsForChannel(channelId: string): Promise<Stat | undefined> {
+    async GetStatsForChannel(channelId: string): Promise<StatisticsType | undefined> {
         const channel = await this.channelService.GetChannel(channelId);
         if (!channel) return undefined;
 
@@ -64,14 +63,14 @@ export class StatService {
      * @param comments The list of comments to calculate statistics for.
      * @returns An object containing the total number of comments, spam comments, and responded comments for the video.
      */
-    private CalculateStats(comments: CommentType[]): Stat {
-        const stats: Stat = {
+    private CalculateStats(comments: CommentType[]): StatisticsType {
+        const stats: StatisticsType = {
             totalComments: comments.length,
             totalUnwanted: 0,
             totalQuestion: 0,
             totalFeedback: 0,
             totalIdea: 0,
-            totalCollaboration: 0
+            totalCollaboration: 0,
         };
 
         for (const comment of comments) {
@@ -84,5 +83,4 @@ export class StatService {
 
         return stats;
     }
-
 }
