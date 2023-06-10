@@ -1,38 +1,46 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@ytc/shared/models/util": ["libs/shared/models/util/src/index.ts"],
-      "@ytc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
-      "@ytc/shared/users/data-access": ["libs/shared/users/data-access/src/index.ts"],
-      "@ytc/shared/ytc-front/routes/util": ["libs/shared/ytc-front/routes/util/src/index.ts"],
-      "@ytc/ytc-front/channel/data-access": ["libs/ytc-front/channel/data-access/src/index.ts"],
-      "@ytc/ytc-front/channel/feature": ["libs/ytc-front/channel/feature/src/index.ts"],
-      "@ytc/ytc-front/channel/feature-shell": ["libs/ytc-front/channel/feature-shell/src/index.ts"],
-      "@ytc/ytc-front/homepage/feature": ["libs/ytc-front/homepage/feature/src/index.ts"],
-      "@ytc/ytc-front/homepage/feature-shell": ["libs/ytc-front/homepage/feature-shell/src/index.ts"],
-      "@ytc/ytc-front/shared/comment/feature": ["libs/ytc-front/shared/comment/feature/src/index.ts"],
-      "@ytc/ytc-front/shared/comment/ui": ["libs/ytc-front/shared/comment/ui/src/index.ts"],
-      "@ytc/ytc-front/video/video-details/data-access": ["libs/ytc-front/video/video-details/data-access/src/index.ts"],
-      "@ytc/ytc-front/video/video-details/feature": ["libs/ytc-front/video/video-details/feature/src/index.ts"],
-      "@ytc/ytc-front/video/video-list/data-access": ["libs/ytc-front/video/video-list/data-access/src/index.ts"],
-      "@ytc/ytc-front/video/video-list/feature": ["libs/ytc-front/video/video-list/feature/src/index.ts"],
-      "@ytc/ytc-front/video/video-list/feature-shell": ["libs/ytc-front/video/video-list/feature-shell/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2020", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@ytc/shared/models/util": ["libs/shared/models/util/src/index.ts"],
+            "@ytc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
+            "@ytc/shared/users/data-access": ["libs/shared/users/data-access/src/index.ts"],
+            "@ytc/shared/ytc-front/routes/util": ["libs/shared/ytc-front/routes/util/src/index.ts"],
+            "@ytc/ytc-front/channel/data-access": ["libs/ytc-front/channel/data-access/src/index.ts"],
+            "@ytc/ytc-front/channel/feature": ["libs/ytc-front/channel/feature/src/index.ts"],
+            "@ytc/ytc-front/channel/feature-shell": ["libs/ytc-front/channel/feature-shell/src/index.ts"],
+            "@ytc/ytc-front/homepage/feature": ["libs/ytc-front/homepage/feature/src/index.ts"],
+            "@ytc/ytc-front/homepage/feature-shell": ["libs/ytc-front/homepage/feature-shell/src/index.ts"],
+            "@ytc/ytc-front/shared/comment/feature": ["libs/ytc-front/shared/comment/feature/src/index.ts"],
+            "@ytc/ytc-front/shared/comment/ui": ["libs/ytc-front/shared/comment/ui/src/index.ts"],
+            "@ytc/ytc-front/shared/statistics/data-access": [
+                "libs/ytc-front/shared/statistics/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-front/shared/statistics/feature": ["libs/ytc-front/shared/statistics/feature/src/index.ts"],
+            "@ytc/ytc-front/video/video-details/data-access": [
+                "libs/ytc-front/video/video-details/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-front/video/video-details/feature": ["libs/ytc-front/video/video-details/feature/src/index.ts"],
+            "@ytc/ytc-front/video/video-list/data-access": ["libs/ytc-front/video/video-list/data-access/src/index.ts"],
+            "@ytc/ytc-front/video/video-list/feature": ["libs/ytc-front/video/video-list/feature/src/index.ts"],
+            "@ytc/ytc-front/video/video-list/feature-shell": [
+                "libs/ytc-front/video/video-list/feature-shell/src/index.ts"
+            ]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }
