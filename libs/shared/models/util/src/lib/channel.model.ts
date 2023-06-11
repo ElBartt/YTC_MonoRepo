@@ -13,10 +13,10 @@ import { z } from 'zod';
  * @property {number} user_id - The ID of the user that owns the channel.
  */
 export const ChannelSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  thumbnail: z.string(),
-  user_id: z.number(),
+    id: z.string(),
+    name: z.string(),
+    thumbnail: z.string(),
+    user_id: z.number(),
 });
 
 export type ChannelType = z.infer<typeof ChannelSchema>;

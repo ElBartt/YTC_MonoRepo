@@ -7,7 +7,7 @@ import { NextFunction, Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 
 export async function AdminApiKeyValidation(req: Request, res: Response, next: NextFunction) {
-    const apiKey = req.header('api-key')!; // We already know it's not null, because the middleware is only called if the api-key exists
+    const apiKey = req.header('api-key'); // We already know it's not null, because the middleware is only called if the api-key exists
 
     // Check if user is admin
     const userService = new UserService();

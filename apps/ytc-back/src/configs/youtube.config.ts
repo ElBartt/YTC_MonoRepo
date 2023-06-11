@@ -6,12 +6,12 @@
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file
-dotenv.config({ path: '.env'});
+dotenv.config({ path: '.env' });
 
 /**
  * Configuration object for YouTube API connection.
  */
 export const YT_CONF = {
-    version: 'v3' as 'v3',
-    auth: process.env.YT_API_KEY
-}
+    version: 'v3' as const,
+    auth: process.env.YT_API_KEY,
+};

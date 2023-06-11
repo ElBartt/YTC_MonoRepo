@@ -1,19 +1,19 @@
 {
-  "app": {
-    "welcomeMsg": "Bienvenue sur YTC",
-    "login": "Se connecter",
-    "inputPlaceholder": "Ecrire ici ..."
-  },
-  "homepage": {
-    "labelInputApiKey": "Saisir votre clé d'API ici"
-  },
-  "channel": {
-    "btnCardChannel": "Voir détails"
-  },
-  "video": {
-    "btnCardVideo": "Voir détails"
-  },
-  "video-details": {
-    "publishedDate": "Publié le"
-  }
+    "app": {
+        "welcomeMsg": "Bienvenue sur YTC",
+        "login": "Se connecter",
+        "inputPlaceholder": "Ecrire ici ..."
+    },
+    "homepage": {
+        "labelInputApiKey": "Saisir votre clé d'API ici"
+    },
+    "channel": {
+        "btnCardChannel": "Voir détails"
+    },
+    "video": {
+        "btnCardVideo": "Voir détails"
+    },
+    "video-details": {
+        "publishedDate": "Publié le"
+    }
 }

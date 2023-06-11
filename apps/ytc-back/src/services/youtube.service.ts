@@ -14,8 +14,8 @@ import { PaginationParams, YoutubeFilteredResponse } from '../types/interface';
  */
 const defaultPaginationParams: PaginationParams = {
     maxResults: 10,
-    pageToken: undefined
-}
+    pageToken: undefined,
+};
 
 /**
  * A class representing the YouTube API service.
@@ -51,7 +51,10 @@ export class YoutubeAPIService {
      * @param paginationParams.pageToken The token for the page of results to retrieve. Defaults to an empty string.
      * @returns An array of comment items.
      */
-    async GetYoutubeComments(videoId: string, paginationParams: PaginationParams = defaultPaginationParams): Promise<YoutubeFilteredResponse<youtube_v3.Schema$CommentThread[]>> {
+    async GetYoutubeComments(
+        videoId: string,
+        paginationParams: PaginationParams = defaultPaginationParams,
+    ): Promise<YoutubeFilteredResponse<youtube_v3.Schema$CommentThread[]>> {
         try {
             const { data } = await this.youtube.commentThreads.list({
                 part: ['snippet'],
@@ -59,19 +62,19 @@ export class YoutubeAPIService {
                 videoId: videoId,
                 moderationStatus: 'published',
                 maxResults: paginationParams.maxResults,
-                pageToken: paginationParams.pageToken
+                pageToken: paginationParams.pageToken,
             });
-            return { 
+            return {
                 nextPageToken: data.nextPageToken,
                 pageInfo: data.pageInfo,
-                items: data.items || []
+                items: data.items || [],
             };
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(`[YOUTUBE] Error retrieving comments for video ${videoId}`);
-            return { 
+            return {
                 nextPageToken: undefined,
                 pageInfo: undefined,
-                items: []
+                items: [],
             };
         }
     }
@@ -84,28 +87,31 @@ export class YoutubeAPIService {
      * @param paginationParams.pageToken The token for the page of results to retrieve. Defaults to an empty string.
      * @returns An array of video items.
      */
-    async GetYoutubeChannelVideos(channelId: string, paginationParams: PaginationParams = defaultPaginationParams): Promise<YoutubeFilteredResponse<youtube_v3.Schema$SearchResult[]>> {
+    async GetYoutubeChannelVideos(
+        channelId: string,
+        paginationParams: PaginationParams = defaultPaginationParams,
+    ): Promise<YoutubeFilteredResponse<youtube_v3.Schema$SearchResult[]>> {
         try {
             const { data } = await this.youtube.search.list({
                 part: ['snippet'],
                 order: 'date',
                 channelId: channelId,
                 maxResults: paginationParams.maxResults,
-                pageToken: paginationParams.pageToken
+                pageToken: paginationParams.pageToken,
             });
-            return { 
+            return {
                 nextPageToken: data.nextPageToken,
                 prevPageToken: data.prevPageToken,
                 pageInfo: data.pageInfo,
-                items: data.items || []
+                items: data.items || [],
             };
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(`[YOUTUBE] Error retrieving videos for channel ${channelId}`);
-            return { 
+            return {
                 nextPageToken: undefined,
                 prevPageToken: undefined,
                 pageInfo: undefined,
-                items: []
+                items: [],
             };
         }
     }

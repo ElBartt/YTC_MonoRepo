@@ -4,7 +4,6 @@
 */
 
 import { Request, Response } from 'express';
-import { ApiKeyService } from '../services/apikey.service';
 import { UserService } from '../services/user.service';
 
 /**

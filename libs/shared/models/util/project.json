@@ -1,24 +1,24 @@
 {
-  "name": "shared-models-util",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/models/util/src",
-  "projectType": "library",
-  "tags": ["scope:shared", "type:util"],
-  "targets": {
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/shared/models/util/**/*.{ts,tsx,js,jsx}"]
-      }
-    },
-    "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/shared/models/util"],
-      "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "../../../../coverage/libs/shared/models/util"
-      }
+    "name": "shared-models-util",
+    "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/shared/models/util/src",
+    "projectType": "library",
+    "tags": ["scope:shared", "type:util"],
+    "targets": {
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/shared/models/util/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": ["coverage/libs/shared/models/util"],
+            "options": {
+                "passWithNoTests": true,
+                "reportsDirectory": "../../../../coverage/libs/shared/models/util"
+            }
+        }
     }
-  }
 }

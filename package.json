@@ -10,7 +10,8 @@
     "back:build": "npx nx run ytc-back:build",
     "back:test": "npx nx run ytc-back:test",
     "back:test:coverage": "npx nx run ytc-back:test --coverage && istanbul-badges-readme --coverageDir=\"./coverage/apps/ytc-back\" --readmeDir=\"./apps/ytc-back\"",
-    "generateApiKey": "node apps/ytc-back/utils/apikey/generator.mjs"
+    "generateApiKey": "node apps/ytc-back/utils/apikey/generator.mjs",
+    "affected:lint:precommit": "npx nx affected:lint --maxWarnings=0 --fix"
   },
   "private": true,
   "dependencies": {
@@ -86,6 +87,7 @@
     "jest": "^29.4.1",
     "jest-environment-node": "^29.4.1",
     "jsdom": "~20.0.3",
+    "lint-staged": "^13.2.2",
     "nx": "16.3.0",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",

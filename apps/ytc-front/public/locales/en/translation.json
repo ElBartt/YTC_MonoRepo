@@ -1,19 +1,19 @@
 {
-  "app": {
-    "welcomeMsg": "Welcome to YTC",
-    "login": "Login",
-    "inputPlaceholder": "Type here ..."
-  },
-  "homepage": {
-    "labelInputApiKey": "Enter your api key here"
-  },
-  "channel": {
-    "btnCardChannel": "Check details"
-  },
-  "video": {
-    "btnCardVideo": "Check details"
-  },
-  "video-details": {
-    "publishedDate": "Published on"
-  }
+    "app": {
+        "welcomeMsg": "Welcome to YTC",
+        "login": "Login",
+        "inputPlaceholder": "Type here ..."
+    },
+    "homepage": {
+        "labelInputApiKey": "Enter your api key here"
+    },
+    "channel": {
+        "btnCardChannel": "Check details"
+    },
+    "video": {
+        "btnCardVideo": "Check details"
+    },
+    "video-details": {
+        "publishedDate": "Published on"
+    }
 }

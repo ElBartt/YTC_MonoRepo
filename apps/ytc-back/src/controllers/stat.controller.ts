@@ -51,7 +51,7 @@ export class StatController {
                 isAssociatedWithUser = await this.videoService.IsVideoIdAssociatedWithUserId(videoId, reqUserId);
                 notFoundMessage = 'No stats found for video';
             } else {
-                isAssociatedWithUser = await this.channelService.IsChannelIdAssociatedWithUserId(channelId!, reqUserId);
+                isAssociatedWithUser = await this.channelService.IsChannelIdAssociatedWithUserId(channelId, reqUserId);
                 notFoundMessage = 'No stats found for channel';
             }
 
@@ -64,7 +64,7 @@ export class StatController {
             if (videoId) {
                 stats = await this.statService.GetStatsForVideo(videoId);
             } else {
-                stats = await this.statService.GetStatsForChannel(channelId!);
+                stats = await this.statService.GetStatsForChannel(channelId);
             }
 
             if (!stats) {

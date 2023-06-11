@@ -1,64 +1,64 @@
 {
-  "name": "ytc-back",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/ytc-back/src",
-  "projectType": "application",
-  "targets": {
-    "build": {
-      "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "target": "node",
-        "compiler": "tsc",
-        "outputPath": "dist/apps/ytc-back",
-        "main": "apps/ytc-back/src/server.ts",
-        "tsConfig": "apps/ytc-back/tsconfig.app.json",
-        "assets": ["apps/ytc-back/src/assets"],
-        "isolatedConfig": true,
-        "webpackConfig": "apps/ytc-back/webpack.config.js"
-      },
-      "configurations": {
-        "development": {},
-        "production": {}
-      }
-    },
-    "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "ytc-back:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "ytc-back:build:development"
+    "name": "ytc-back",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/ytc-back/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/apps/ytc-back",
+                "main": "apps/ytc-back/src/server.ts",
+                "tsConfig": "apps/ytc-back/tsconfig.app.json",
+                "assets": ["apps/ytc-back/src/assets"],
+                "isolatedConfig": true,
+                "webpackConfig": "apps/ytc-back/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
         },
-        "production": {
-          "buildTarget": "ytc-back:build:production"
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "ytc-back:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "ytc-back:build:development"
+                },
+                "production": {
+                    "buildTarget": "ytc-back:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/ytc-back/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/ytc-back/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
         }
-      }
     },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/ytc-back/**/*.ts"]
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/ytc-back/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    }
-  },
-  "tags": ["scope:ytc-back", "type:app"]
+    "tags": ["scope:ytc-back", "type:app"]
 }

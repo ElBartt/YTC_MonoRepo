@@ -39,6 +39,8 @@ export class Database {
      * @param values An optional array of values to replace placeholders in the SQL query.
      * @returns A Promise that resolves to the result of the SQL query.
      */
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     public async query<T>(sql: string, values?: any[]): Promise<T> {
         const [rows] = await this.pool.query(sql, values);
         return rows as T;

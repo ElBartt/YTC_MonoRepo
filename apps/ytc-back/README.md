@@ -1,44 +1,50 @@
 # YTC [OnGoing]
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
-[![test](https://github.com/ElBartt/YTC/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ElBartt/YTC/actions/workflows/tests.yml) 
+[![test](https://github.com/ElBartt/YTC/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ElBartt/YTC/actions/workflows/tests.yml)
 
-![Statements](https://img.shields.io/badge/statements-8.28%25-red.svg?style=flat) 
-![Branches](https://img.shields.io/badge/branches-1.7%25-red.svg?style=flat) 
-![Functions](https://img.shields.io/badge/functions-7.5%25-red.svg?style=flat) 
+![Statements](https://img.shields.io/badge/statements-8.28%25-red.svg?style=flat)
+![Branches](https://img.shields.io/badge/branches-1.7%25-red.svg?style=flat)
+![Functions](https://img.shields.io/badge/functions-7.5%25-red.svg?style=flat)
 ![Lines](https://img.shields.io/badge/lines-9.34%25-red.svg?style=flat)
 
 # Table of contents
-- [Introduction](#introduction)
-- [How to start](#how-to-start)
-- [Architecture](#architecture)
+
+-   [Introduction](#introduction)
+-   [How to start](#how-to-start)
+-   [Architecture](#architecture)
 
 # Introduction
 
 [TBD]
 
 # How to start :
-create a `.env` file at folder root, copy and replace that 
+
+create a `.env` file at folder root, copy and replace that
+
 ```
-# DB 
+# DB
 DB_HOST = 'REPLACE-ME'
 DB_NAME = 'REPLACE-ME'
 DB_USER = 'REPLACE-ME'
 DB_PASSWORD = 'REPLACE-ME'
 
-# Youtube API 
+# Youtube API
 YT_API_KEY = 'REPLACE-ME'
 
 # OpenAI
 OAI_API_KEY = 'REPLACE-ME'
 OAI_ORG_ID = 'REPLACE-ME'
 ```
-## Get Api keys here : 
-- [OpenAI API key](https://platform.openai.com/account/api-keys)
-- [OpenAI org ID](https://platform.openai.com/account/org-settings)
-- [Youtube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com?project=reflected-radio-138113)
+
+## Get Api keys here :
+
+-   [OpenAI API key](https://platform.openai.com/account/api-keys)
+-   [OpenAI org ID](https://platform.openai.com/account/org-settings)
+-   [Youtube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com?project=reflected-radio-138113)
 
 ## Create the database :
+
 Run the `YTC.sql` on your favorite DB administration tool
 
 ## Generate an API key for the project :
@@ -48,9 +54,10 @@ run the `./apikey/generate.py` script to generate an API key for the project
 
 then add the generated key to the database apikey table, with as a name your pseudo
 
-## Start the project : 
-> `npm install` 
-> 
+## Start the project :
+
+> `npm install`
+>
 > `npm start`
 
 ## Testing API :
@@ -60,6 +67,7 @@ Go on [localhost](http://localhost:1234/api-docs/), click on authorize and paste
 Then you can try out the differents routes
 
 # Architecture :
+
 ```
 YoutubeComment
 ├── .husky/
@@ -97,4 +105,3 @@ YoutubeComment
 └── tsconfig.json
 
 ```
-
