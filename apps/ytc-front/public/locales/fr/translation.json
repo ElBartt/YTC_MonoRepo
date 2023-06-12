@@ -1,4 +1,10 @@
 {
+    "COMMENTS": "Commentaires",
+    "UNWANTED": "Non désirés",
+    "QUESTIONS": "Questions",
+    "FEEDBACK": "Feedback",
+    "IDEAS": "Idées",
+    "COLLABORATION": "Collaboration",
     "app": {
         "welcomeMsg": "Bienvenue sur YTC",
         "login": "Se connecter",
