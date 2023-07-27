@@ -44,6 +44,11 @@ export class Extraction {
                 .replace(/\s+/g, ' ')
                 // remove trailing spaces
                 .trim();
+
+            // transform date "2023-05-21T19:42:53Z" into "2023-05-21 19:42:53"
+            comment.date = comment.date
+                .replace('T', ' ')
+                .replace('Z', '');
         });
 
         // remove empty comments and comments that don't contain letters
