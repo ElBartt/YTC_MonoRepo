@@ -61,6 +61,7 @@ export class YoutubeAPIService {
                 order: 'relevance',
                 videoId: videoId,
                 moderationStatus: 'published',
+                textFormat: 'plainText',
                 maxResults: paginationParams.maxResults,
                 pageToken: paginationParams.pageToken,
             });
