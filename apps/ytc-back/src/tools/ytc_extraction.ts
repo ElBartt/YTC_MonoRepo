@@ -7,17 +7,31 @@ import { YoutubeFilteredResponse } from '../types/interface';
 
 export class Extraction {
     async Start() {
+        const videoIdList = [
+            "mqBn7jJ_p08", "2QYCprGIslw", "ZlRjN4VuPBk", "JbkmJQcaN5c",
+            "8T4lqk5tqpo", "44tUsO22Tgk", "3Jj47WiZEjo", "cjSSxMksHVE",
+            "b71LNFaP6aQ", "V6gabUm9sWw", "VLPj8ayqgY4", "mBjGWk_A1bE", 
+            "I1s9gMxL3IE", "23Ic9SN3srI", "oty1Ek7Iu0Y", "TTs865ybLKQ",
+            "TJVJuMKZqfo", "VF5fEiLZ9qw", "aKsxgnHNCfU", "YO2QqBLfmXM",
+            "aH77WLlx8kI", "6CxGCYxa2hY", "Srxf3yxSfHA", "GbkxChQSEmw"
+        ];
+        for (const videoId of videoIdList) {
+            await this.ExtractCommentsFromVideo(videoId);
+        }
+    }
+
+    async ExtractCommentsFromVideo(videoId: string) {
         let pageToken = "";
-        for (let i = 0; i < 4; i++) {
-            const youtubeComments = await this.MakeYoutubeRequest(pageToken);
+        for (let i = 0; i < 3; i++) {
+            const youtubeComments = await this.MakeYoutubeRequest(videoId, pageToken);
             await this.ExtractComments(youtubeComments);
             pageToken = youtubeComments.nextPageToken;
         }
     }
 
-    async MakeYoutubeRequest(pageToken = "") {
+    async MakeYoutubeRequest(videoId: string, pageToken = "") {
         const youtubeAPI = YoutubeAPIService.getInstance();
-        const youtubeComments = await youtubeAPI.GetYoutubeComments("KAQlI52dYQE", {
+        const youtubeComments = await youtubeAPI.GetYoutubeComments(videoId, {
             maxResults: 100,
             pageToken: pageToken
         });
