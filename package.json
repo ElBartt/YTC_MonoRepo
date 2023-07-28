@@ -6,7 +6,7 @@
         "dev:ytc": "npx nx run-many --parallel --target=serve --projects=ytc-back,ytc-front",
         "dev:admin": "npx nx run ytc-dashboard:serve:development",
         "front:serve": "npx nx run ytc-front:serve:development",
-        "front-admin:serve": "npx nx run ytc-admin-dashboard:serve:development",
+        "front-admin:serve": "npx nx run ytc-dashboard:serve:development",
         "back-admin:serve": "npx nx run ytc-admin-back:serve:development",
         "graph": "npx nx dep-graph",
         "back:serve": "npx nx run ytc-back:serve",
