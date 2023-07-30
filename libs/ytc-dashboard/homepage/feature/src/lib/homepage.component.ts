@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { SupabaseService } from '../services/supabase.service';
 import { Router } from '@angular/router';
+import { AuthKeyService } from '@ytc/ytc-dashboard/homepage/data-access';
 
 @Component({
-    selector: 'ytc-homepage',
+    selector: 'ytc-dashboard-homepage',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './homepage.component.html',
 })
 export class HomepageComponent implements OnInit {
-    private readonly supabaseService = inject(SupabaseService);
+    private readonly authKeyService = inject(AuthKeyService);
     private readonly router = inject(Router);
 
     public ngOnInit(): void {
@@ -20,7 +20,7 @@ export class HomepageComponent implements OnInit {
     }
 
     public goClicked(value: string): void {
-        this.supabaseService.getAuthKey(value).subscribe(authKey => {
+        this.authKeyService.getAuthKey(value).subscribe(authKey => {
             if (authKey.key && authKey.key.length > 0) {
                 localStorage.setItem('authKey', authKey.key);
                 this.router.navigate(['/dashboard']);

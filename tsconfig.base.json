@@ -20,6 +20,15 @@
             "@ytc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
             "@ytc/shared/users/data-access": ["libs/shared/users/data-access/src/index.ts"],
             "@ytc/shared/ytc-front/routes/util": ["libs/shared/ytc-front/routes/util/src/index.ts"],
+            "@ytc/ytc-dashboard/feature-shell": ["libs/ytc-dashboard/feature-shell/src/index.ts"],
+            "@ytc/ytc-dashboard/homepage/data-access": ["libs/ytc-dashboard/homepage/data-access/src/index.ts"],
+            "@ytc/ytc-dashboard/homepage/feature": ["libs/ytc-dashboard/homepage/feature/src/index.ts"],
+            "@ytc/ytc-dashboard/labeling/data-access": ["libs/ytc-dashboard/labeling/data-access/src/index.ts"],
+            "@ytc/ytc-dashboard/labeling/feature": ["libs/ytc-dashboard/labeling/feature/src/index.ts"],
+            "@ytc/ytc-dashboard/shared/supabase/data-access": [
+                "libs/ytc-dashboard/shared/supabase/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-dashboard/shared/supabase/util": ["libs/ytc-dashboard/shared/supabase/util/src/index.ts"],
             "@ytc/ytc-front/channel/data-access": ["libs/ytc-front/channel/data-access/src/index.ts"],
             "@ytc/ytc-front/channel/feature": ["libs/ytc-front/channel/feature/src/index.ts"],
             "@ytc/ytc-front/channel/feature-shell": ["libs/ytc-front/channel/feature-shell/src/index.ts"],

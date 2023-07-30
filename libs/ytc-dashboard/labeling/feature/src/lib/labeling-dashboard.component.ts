@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
-import { SupabaseService } from '../services/supabase.service';
-import { YtcCommentsModel, YtcCommentsTypeModel } from '../supabase';
+import { CommentsService } from '@ytc/ytc-dashboard/labeling/data-access';
+import { YtcCommentsModel, YtcCommentsTypeModel } from '@ytc/ytc-dashboard/shared/supabase/util';
 
 @Component({
-    selector: 'ytc-dashboard',
+    selector: 'ytc-labeling-dashboard',
     standalone: true,
     imports: [CommonModule],
-    templateUrl: './dashboard.component.html',
+    templateUrl: './labeling-dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
-    private readonly supabaseService = inject(SupabaseService);
+export class LabelingDashboardComponent implements OnInit {
+    private readonly commentsService = inject(CommentsService);
     public isLoading = false;
     public unfilledComment$!: Observable<YtcCommentsModel>;
     public commentTypes!: YtcCommentsTypeModel[];
@@ -19,10 +19,10 @@ export class DashboardComponent implements OnInit {
     public filledCommentsCount!: number | null;
 
     ngOnInit(): void {
-        this.supabaseService.getCommentsCount().subscribe(count => (this.commentsCount = count));
-        this.supabaseService.getFilledCommentsCount().subscribe(count => (this.filledCommentsCount = count));
+        this.commentsService.getCommentsCount().subscribe(count => (this.commentsCount = count));
+        this.commentsService.getFilledCommentsCount().subscribe(count => (this.filledCommentsCount = count));
 
-        this.unfilledComment$ = this.supabaseService.getOneUnfilledComments().pipe(
+        this.unfilledComment$ = this.commentsService.getOneUnfilledComments().pipe(
             tap(() => (this.isLoading = true)),
             map((comment: YtcCommentsModel) => {
                 return { ...comment, id: comment.id, comment_text: comment.comment_text };
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
             tap(() => (this.isLoading = false)),
         );
 
-        this.supabaseService
+        this.commentsService
             .getCommentTypes()
             .pipe(
                 tap(() => (this.isLoading = true)),
@@ -46,14 +46,14 @@ export class DashboardComponent implements OnInit {
 
     assignCategory(commentTypeId: number, currentCommentId: number) {
         this.isLoading = true;
-        this.supabaseService.updateCommentType(commentTypeId, currentCommentId).subscribe(() => {
-            this.unfilledComment$ = this.supabaseService.getOneUnfilledComments().pipe(
+        this.commentsService.updateCommentType(commentTypeId, currentCommentId).subscribe(() => {
+            this.unfilledComment$ = this.commentsService.getOneUnfilledComments().pipe(
                 map((comment: YtcCommentsModel) => {
                     this.isLoading = false;
                     return { ...comment, id: comment.id, comment_text: comment.comment_text };
                 }),
             );
         });
-        this.supabaseService.getFilledCommentsCount().subscribe(count => (this.filledCommentsCount = count));
+        this.commentsService.getFilledCommentsCount().subscribe(count => (this.filledCommentsCount = count));
     }
 }

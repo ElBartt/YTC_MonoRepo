@@ -21,6 +21,10 @@
                                 "onlyDependOnLibsWithTags": ["scope:ytc-back", "scope:shared"]
                             },
                             {
+                                "sourceTag": "scope:ytc-dashboard",
+                                "onlyDependOnLibsWithTags": ["scope:ytc-dashboard", "scope:shared"]
+                            },
+                            {
                                 "sourceTag": "scope:shared",
                                 "onlyDependOnLibsWithTags": ["scope:shared"]
                             },
