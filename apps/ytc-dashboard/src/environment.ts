@@ -1,4 +1,4 @@
-import { Database } from './app/supabase';
+import { Database } from '@ytc/ytc-dashboard/shared/supabase/util';
 import { createClient } from '@supabase/supabase-js';
 
 export const supabase = createClient<Database>(
