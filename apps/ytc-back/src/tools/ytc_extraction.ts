@@ -15,6 +15,7 @@ export class Extraction {
             "TJVJuMKZqfo", "VF5fEiLZ9qw", "aKsxgnHNCfU", "YO2QqBLfmXM",
             "aH77WLlx8kI", "6CxGCYxa2hY", "Srxf3yxSfHA", "GbkxChQSEmw"
         ];
+            
         for (const videoId of videoIdList) {
             await this.ExtractCommentsFromVideo(videoId);
         }
@@ -25,6 +26,10 @@ export class Extraction {
         for (let i = 0; i < 3; i++) {
             const youtubeComments = await this.MakeYoutubeRequest(videoId, pageToken);
             await this.ExtractComments(youtubeComments);
+            const nextPageToken = youtubeComments.nextPageToken;
+            if (!nextPageToken) {
+                break;
+            }
             pageToken = youtubeComments.nextPageToken;
         }
     }
