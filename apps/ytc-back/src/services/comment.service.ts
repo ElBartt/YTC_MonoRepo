@@ -3,9 +3,11 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
+import { CommentType } from '@ytc/shared/models/util';
 import { OkPacket } from 'mysql2';
 import { Database } from '../database/database';
-import { CommentType } from '@ytc/shared/models/util';
+import { OpenAIService } from './ai.service';
+import { HuggingFaceService } from './huggingface.service';
 import { VideoService } from './video.service';
 import { YoutubeAPIService } from './youtube.service';
 
@@ -16,6 +18,8 @@ export class CommentService {
     private db: Database;
     private youtubeAPI: YoutubeAPIService;
     private videoService: VideoService;
+    private openAIService: OpenAIService;
+    private huggingFaceService: HuggingFaceService;
 
     private readonly COMMENTS_NUMBER_LIMIT = 20;
 
@@ -26,7 +30,9 @@ export class CommentService {
     constructor() {
         this.db = Database.getInstance();
         this.youtubeAPI = YoutubeAPIService.getInstance();
+        this.huggingFaceService = HuggingFaceService.getInstance();
         this.videoService = new VideoService();
+        this.openAIService = new OpenAIService();
     }
 
     /**
@@ -68,9 +74,53 @@ export class CommentService {
             }))
             .filter(comment => comment.id !== '' && comment.commenter !== '' && comment.comment !== '');
 
+        await this.classifyComments(dbComments, video.title);
         await this.InsertCommentList(dbComments);
 
         return dbComments;
+    }
+
+    /**
+     * Classifies all comments in the given array using HuggingFace and updates the comment objects accordingly.
+     * @param comments The array of comments to classify.
+     * @param videoTitle The title of the video the comments belong to.
+     */
+    async classifyComments(comments: CommentType[], videoTitle: string): Promise<void> {
+        try {
+            if (!comments || !Array.isArray(comments) || comments.length === 0) {
+                throw new Error('Invalid input: comments must be a non-empty array');
+            }
+            if (!videoTitle || typeof videoTitle !== 'string') {
+                throw new Error('Invalid input: videoTitle must be a non-empty string');
+            }
+            const commentClasses = await this.huggingFaceService.predictBatch(comments.map(comment => comment.comment), videoTitle);
+            for (let i = 0; i < comments.length; i++) {
+                const comment = comments[i];
+                const commentClass = commentClasses[i];
+                switch (commentClass) {
+                    case this.huggingFaceService.categories[2]:
+                        comment.collaboration = true;
+                        break;
+                    case this.huggingFaceService.categories[0]:
+                        comment.question = true;
+                        break;
+                    case this.huggingFaceService.categories[4]:
+                        comment.idea = true;
+                        break;
+                    case this.huggingFaceService.categories[1]:
+                        comment.feedback = true;
+                        break;
+                    case this.huggingFaceService.categories[3]:
+                        comment.unwanted = true;
+                        break;
+                    default:
+                        throw new Error(`Invalid classification result: ${commentClass}`);
+                }
+            }
+        } catch (error) {
+            console.error(`Error classifying comments: ${error.message}`);
+            throw error;
+        }
     }
 
     /**

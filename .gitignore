@@ -42,3 +42,7 @@ Thumbs.db
 **/.env
 
 .angular
+
+# Hugging Face
+comments.csv
+/cache
