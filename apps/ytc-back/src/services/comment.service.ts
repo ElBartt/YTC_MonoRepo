@@ -151,7 +151,8 @@ export class CommentService {
     async GetCommentForVideoList(videoIdList: string[]): Promise<CommentType[]> {
         if (videoIdList.length === 0) return [];
 
-        const promises = videoIdList.map(videoId => this.GetComments(videoId, true));
+        // TODO : find a way to smart refresh the comments when loading stats?channels on frontend
+        const promises = videoIdList.map(videoId => this.GetComments(videoId, false));
         const comments = await Promise.all(promises);
 
         return comments.flat();
