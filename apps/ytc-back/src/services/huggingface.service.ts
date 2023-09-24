@@ -32,6 +32,7 @@ export class HuggingFaceService {
         const { pipeline } = await TransformersApi;
         this.classifier = await pipeline('zero-shot-classification', this.classifierModelName, {
             quantized: false,
+            batch_size: 5,
             cache_dir: './cache',
         });
         // TODO : check if we need to translate the texts
@@ -41,6 +42,7 @@ export class HuggingFaceService {
     }
 
     public async predictBatch(texts: string[], videoTitle: string): Promise<(string | null)[] | null> {
+        console.log(`Predicting categories for '${texts.length}' texts for video '${videoTitle}'`)
         try {
             // TODO : check if we need to translate the texts
             // const translations = await this.translater(texts, {

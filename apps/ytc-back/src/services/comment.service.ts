@@ -21,7 +21,7 @@ export class CommentService {
     private openAIService: OpenAIService;
     private huggingFaceService: HuggingFaceService;
 
-    private readonly COMMENTS_NUMBER_LIMIT = 20;
+    private readonly COMMENTS_NUMBER_LIMIT = 100;
 
     /**
      * Creates an instance of CommentService.
