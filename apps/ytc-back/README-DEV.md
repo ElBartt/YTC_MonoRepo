@@ -39,17 +39,17 @@ MySql export :
     - <span style="color:green">✔️ Backend ApiKey validation</span>
     - <span style="color:green">✔️ Backend Database ApiKey/User</span>
     - <span style="color:#ff9999"> ❌ Frontend little user session management (for apikey) </span>
-    - <span style="color:#ff9999">❌ Frontend ApiKey input</span>
+    - <span style="color:#ff9999">✔️ Frontend ApiKey input</span>
 3. I click on the channel that interests me.
     - <span style="color:green">✔️ Backend Fetch channels of my user</span>
     - <span style="color:#ff9999">❌ Frontend channels display</span>
 2. I click on the video that interests me.
     - <span style="color:green">✔️ Backend Fetch videos of my channel</span>
-    - <span style="color:#ff9999">❌ Frontend videos display</span>
+    - <span style="color:#ff9999">✔️ Frontend videos display</span>
 3. I see a list of comments.
     - <span style="color:green">✔️ Backend Fetch comments of the video.</span>
     - <span style="color:#ff9999">❌ Backend pass through OpenAI if not already done.</span>
-    - <span style="color:#ff9999">❌ Frontend comments display</span>
+    - <span style="color:#ff9999">✔️ Frontend comments display</span>
 
 ## <span style="color:lightblue">**Backlog & Ideas:**</span>
 
