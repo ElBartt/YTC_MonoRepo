@@ -58,7 +58,7 @@ then add the generated key to the database apikey table, with as a name your pse
 
 > `npm install`
 >
-> `npm run dev`
+> `npm run dev:ytc`
 
 ## Testing API :
 
