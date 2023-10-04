@@ -21,6 +21,9 @@ import { videoRouter } from './routes/video.route';
 // Set up the Express app
 const app = express();
 
+// Set up middleware to parse JSON body
+app.use(express.json());
+
 // Enable CORS
 app.use(cors());
 

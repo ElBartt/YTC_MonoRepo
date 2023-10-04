@@ -15,4 +15,6 @@ import { UserController } from "../controllers/user.controller";
 export const userRouter = Router();
 const userController = new UserController();
 
+userRouter.post('/', userController.addUser.bind(userController));
+
 userRouter.get('/', userController.getUsers.bind(userController));

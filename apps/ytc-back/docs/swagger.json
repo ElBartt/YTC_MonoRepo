@@ -97,6 +97,93 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Add a new user",
+                "description": "Add a new user from body request json",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "TestUser"
+                                    },
+                                    "is_admin": {
+                                        "type": "boolean",
+                                        "example": "0"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "message": {
+                                                "type": "string",
+                                                "example": "User added successfully!"
+                                            },
+                                            "userId": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing username parameter in body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "string",
+                                            "example": "Missing username parameter"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "example": "Missing is_admin parameter"
+                                        }
+                                    ]
+                                },
+                                "examples": {
+                                    "missingUsername": {
+                                        "value": "Missing username parameter in body"
+                                    },
+                                    "missingIsAdmin": {
+                                        "value": "Missing is_admin parameter in body"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized to access this resource"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/channels": {

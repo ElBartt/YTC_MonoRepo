@@ -3,9 +3,9 @@
    For more information, please refer to the license file or visit: https://creativecommons.org/licenses/by-nc/4.0/
 */
 
+import { UserType } from '@ytc/shared/models/util';
 import { Database } from '../database/database';
 import { ApiKeyService } from './apikey.service';
-import { UserType } from '@ytc/shared/models/util';
 
 export class UserService {
     private db: Database;
@@ -50,8 +50,23 @@ export class UserService {
         return user;
     }
 
+    /**
+     * Checks if a user is an admin.
+     * @param apiKey The API key of the user to check.
+     * @returns A Promise that resolves to a boolean indicating whether the user is an admin or not.
+     */
     async IsUserAdmin(apiKey: string): Promise<boolean> {
         const user = await this.GetUserFromApiKey(apiKey);
         return user ? user.is_admin : false;
+    }
+
+    /** 
+     * Add a new user to the database if it doesn't already exist.
+     * @param user The user to add to the database.
+     * @returns A Promise that resolves to the ID of the newly created user.
+     */
+    async AddUser(user: UserType): Promise<number> {
+        const result = await this.db.query('INSERT IGNORE INTO user SET ?', [user]);
+        return result['insertId'];
     }
 }

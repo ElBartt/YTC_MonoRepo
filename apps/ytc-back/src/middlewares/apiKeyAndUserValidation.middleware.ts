@@ -14,8 +14,9 @@ import { UserService } from '../services/user.service';
  */
 export function ApiKeyAndUserValidation(excludedRoutes: string[] = []) {
     return async function (req: Request, res: Response, next: NextFunction) {
-        // Exclude routes from API key validation
-        if (excludedRoutes.some(route => req.url.startsWith(route))) {
+        
+        // Exclude routes from API key validation for get requests
+        if (excludedRoutes.some(route => req.url.startsWith(route)) && req.method === 'GET') {
             next();
             return;
         }
