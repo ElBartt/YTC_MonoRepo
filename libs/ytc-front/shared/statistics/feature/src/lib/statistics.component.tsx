@@ -1,5 +1,5 @@
 import { LABEL_STATS_LABELS, StatisticsType } from '@ytc/shared/models/util';
-import { ButtonBadge } from '@ytc/shared/ui-components';
+import { ButtonBadge } from '@ytc/shared/ui-components-react';
 import { useTranslation } from 'react-i18next';
 
 export interface StatisticsProps {

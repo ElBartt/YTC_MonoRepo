@@ -1,0 +1,10 @@
+<ytc-shared-ui-components-ui-button
+    (buttonClick)="onClick()"
+    buttonType="btn-primary"
+    [customStyle]="customStyleButton"
+>
+    <ytc-shared-ui-components-ui-badge customStyle="customStyleBadge" badgeType="badgeType">
+        <ng-content select="[badge-slot]"></ng-content>
+    </ytc-shared-ui-components-ui-badge>
+    <ng-content select="[button-slot]"></ng-content>
+</ytc-shared-ui-components-ui-button>

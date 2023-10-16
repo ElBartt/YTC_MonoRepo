@@ -1,0 +1,14 @@
+<div class="card card-compact w-96 bg-base-100 shadow-xl">
+    <figure>
+        <img src="{{ imgUrl }}" alt="ytc-thumbnail" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{ cardTitle }}</h2>
+        <p>{{ subCardTitle }}</p>
+        <div class="card-actions justify-end">
+            <ytc-shared-ui-components-ui-button (buttonClick)="onClick()" buttonType="btn-primary">
+                {{ cardBtnText }}
+            </ytc-shared-ui-components-ui-button>
+        </div>
+    </div>
+</div>

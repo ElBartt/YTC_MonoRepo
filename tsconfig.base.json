@@ -17,9 +17,17 @@
         "baseUrl": ".",
         "paths": {
             "@ytc/shared/models/util": ["libs/shared/models/util/src/index.ts"],
-            "@ytc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
+            "@ytc/shared/ui-components-react": ["libs/shared/ui-components-react/src/index.ts"],
+            "@ytc/shared/ui-components/ui-badge": ["libs/shared/ui-components/ui-badge/src/index.ts"],
+            "@ytc/shared/ui-components/ui-button": ["libs/shared/ui-components/ui-button/src/index.ts"],
+            "@ytc/shared/ui-components/ui-button-badge": ["libs/shared/ui-components/ui-button-badge/src/index.ts"],
+            "@ytc/shared/ui-components/ui-card": ["libs/shared/ui-components/ui-card/src/index.ts"],
+            "@ytc/shared/ui-components/ui-input-text-multi-label": [
+                "libs/shared/ui-components/ui-input-text-multi-label/src/index.ts"
+            ],
             "@ytc/shared/users/data-access": ["libs/shared/users/data-access/src/index.ts"],
             "@ytc/shared/ytc-front/routes/util": ["libs/shared/ytc-front/routes/util/src/index.ts"],
+            "@ytc/ui-components-": ["libs/shared/ui-components/ui-card-centered/src/index.ts"],
             "@ytc/ytc-dashboard/feature-shell": ["libs/ytc-dashboard/feature-shell/src/index.ts"],
             "@ytc/ytc-dashboard/homepage/data-access": ["libs/ytc-dashboard/homepage/data-access/src/index.ts"],
             "@ytc/ytc-dashboard/homepage/feature": ["libs/ytc-dashboard/homepage/feature/src/index.ts"],
@@ -29,6 +37,40 @@
                 "libs/ytc-dashboard/shared/supabase/data-access/src/index.ts"
             ],
             "@ytc/ytc-dashboard/shared/supabase/util": ["libs/ytc-dashboard/shared/supabase/util/src/index.ts"],
+            "@ytc/ytc-front-angular/channel/data-access": ["libs/ytc-front-angular/channel/data-access/src/index.ts"],
+            "@ytc/ytc-front-angular/channel/feature": ["libs/ytc-front-angular/channel/feature/src/index.ts"],
+            "@ytc/ytc-front-angular/channel/feature-shell": [
+                "libs/ytc-front-angular/channel/feature-shell/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/homepage/feature": ["libs/ytc-front-angular/homepage/feature/src/index.ts"],
+            "@ytc/ytc-front-angular/homepage/feature-shell": [
+                "libs/ytc-front-angular/homepage/feature-shell/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/shared/comment/feature": [
+                "libs/ytc-front-angular/shared/comment/feature/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/shared/comment/ui": ["libs/ytc-front-angular/shared/comment/ui/src/index.ts"],
+            "@ytc/ytc-front-angular/shared/statistics/data-access": [
+                "libs/ytc-front-angular/shared/statistics/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/shared/statistics/feature": [
+                "libs/ytc-front-angular/shared/statistics/feature/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/video/video-details/data-access": [
+                "libs/ytc-front-angular/video/video-details/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/video/video-details/feature": [
+                "libs/ytc-front-angular/video/video-details/feature/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/video/video-list/data-access": [
+                "libs/ytc-front-angular/video/video-list/data-access/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/video/video-list/feature": [
+                "libs/ytc-front-angular/video/video-list/feature/src/index.ts"
+            ],
+            "@ytc/ytc-front-angular/video/video-list/feature-shell": [
+                "libs/ytc-front-angular/video/video-list/feature-shell/src/index.ts"
+            ],
             "@ytc/ytc-front/channel/data-access": ["libs/ytc-front/channel/data-access/src/index.ts"],
             "@ytc/ytc-front/channel/feature": ["libs/ytc-front/channel/feature/src/index.ts"],
             "@ytc/ytc-front/channel/feature-shell": ["libs/ytc-front/channel/feature-shell/src/index.ts"],

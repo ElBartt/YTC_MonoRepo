@@ -1,0 +1,15 @@
+<div class="card w-96 bg-base-100 shadow-xl sm:mt-3">
+    <figure class="px-10 pt-10">
+        <img referrerPolicy="no-referrer" src="{{ imgUrl }}" alt="" class="max-h-20 rounded-xl" />
+    </figure>
+    <div class="card-body items-center text-center">
+        <h2 class="card-title">{{ cardTitle }}!</h2>
+        <p *ngIf="subCardTitle">{{ subCardTitle }}</p>
+        <ng-content />
+        <div class="card-actions">
+            <ytc-shared-ui-components-ui-button (buttonClick)="onClick()" buttonType="btn-primary">
+                {{ cardBtnText }}
+            </ytc-shared-ui-components-ui-button>
+        </div>
+    </div>
+</div>

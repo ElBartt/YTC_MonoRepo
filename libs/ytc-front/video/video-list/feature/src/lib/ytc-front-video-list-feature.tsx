@@ -1,5 +1,5 @@
 import { VideoType } from '@ytc/shared/models/util';
-import { Card } from '@ytc/shared/ui-components';
+import { Card } from '@ytc/shared/ui-components-react';
 import { getVideoList } from '@ytc/ytc-front/video/video-list/data-access';
 import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';

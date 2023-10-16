@@ -1,5 +1,5 @@
 import { ChannelType, LABEL_STATS_LABELS, StatisticsType } from '@ytc/shared/models/util';
-import { CardCentered } from '@ytc/shared/ui-components';
+import { CardCentered } from '@ytc/shared/ui-components-react';
 import { ROUTES } from '@ytc/shared/ytc-front/routes/util';
 import { getChannelList } from '@ytc/ytc-front/channel/data-access';
 import { getStatistics } from '@ytc/ytc-front/shared/statistics/data-access';
