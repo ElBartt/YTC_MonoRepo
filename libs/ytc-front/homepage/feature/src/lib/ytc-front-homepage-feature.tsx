@@ -39,7 +39,6 @@ export function YtcFrontHomepageFeature() {
         placeholder={t('app.inputPlaceholder')}
         styleInput="input-primary"
         onInputChange={handleInputChange}
-        defaultValue={import.meta.env.DEV && inputValue === '' ? import.meta.env.VITE_APP_API_KEY_MASTU : inputValue}
       />
       <Button buttonType="btn-primary" customStyle="w-fit" onClick={handleClick}>
         {t('app.login')}
