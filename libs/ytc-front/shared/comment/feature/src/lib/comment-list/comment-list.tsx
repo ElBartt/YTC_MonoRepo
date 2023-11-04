@@ -1,15 +1,19 @@
-import { Comment } from '@ytc/ytc-front/shared/comment/ui';
-import { CommentType } from '@ytc/shared/models/util';
+import {Comment, getCommentType} from '@ytc/ytc-front/shared/comment/ui';
+import {CommentType} from '@ytc/shared/models/util';
 
 export interface CommentListProps {
     comments: CommentType[];
+    filter?: string;
 }
 
-export function CommentList(props: CommentListProps) {
+export function CommentList({comments, filter}: CommentListProps) {
     return (
         <>
-            {props.comments.map(com => (
-                <Comment key={com.id} comment={com} />
+            {comments.filter(value => {
+                if (filter?.length === 0) return true;
+                return filter?.toUpperCase().includes(getCommentType(value).toUpperCase());
+            }).map(com => (
+                <Comment key={com.id} comment={com}/>
             ))}
         </>
     );

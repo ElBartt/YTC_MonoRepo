@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 export interface StatisticsProps {
     readonly statistics: StatisticsType;
+    readonly filter: string;
+    readonly setFilter: (filterName: string) => void;
 }
 
-export function Statistics({ statistics }: StatisticsProps) {
+export function Statistics({ statistics, filter, setFilter }: StatisticsProps) {
     const { t } = useTranslation();
 
     const formatValue = (value: number): string => {
@@ -25,7 +27,7 @@ export function Statistics({ statistics }: StatisticsProps) {
                     customStyleButton="btn-primary"
                     badgeLabel={t(LABEL_STATS_LABELS[key as keyof StatisticsType])}
                     onClick={function (): void {
-                        throw new Error('Function not implemented.');
+                        setFilter(key);
                     }}
                 >
                     {formatValue(value)}

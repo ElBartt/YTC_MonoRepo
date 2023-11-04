@@ -14,6 +14,8 @@ export function YtcFrontVideoVideoDetailsFeature() {
     const { video, apiKey } = useLocation().state;
     const [commentList, setCommentList] = useState<CommentType[]>([]);
     const [stats, setStats] = useState<StatisticsType>({});
+    const [selectedFilter, setSelectedFilter] = useState<string>("");
+
 
     useEffect(() => {
         if (id) {
@@ -42,8 +44,8 @@ export function YtcFrontVideoVideoDetailsFeature() {
                     </figure>
                 </div>
             </div>
-            <Statistics statistics={stats}></Statistics>
-            <CommentList comments={commentList}></CommentList>
+            <Statistics statistics={stats} filter={selectedFilter} setFilter={setSelectedFilter}></Statistics>
+            <CommentList comments={commentList} filter={selectedFilter}></CommentList>
         </>
     );
 }
