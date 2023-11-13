@@ -10,7 +10,7 @@ export function CommentList({comments, filter}: CommentListProps) {
     return (
         <>
             {comments.filter(value => {
-                if (filter?.length === 0) return true;
+                if (filter?.length === 0 || filter === 'totalComments') return true;
                 return filter?.toUpperCase().includes(getCommentType(value).toUpperCase());
             }).map(com => (
                 <Comment key={com.id} comment={com}/>
