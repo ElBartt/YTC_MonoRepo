@@ -80,6 +80,42 @@ export class YoutubeAPIService {
         }
     }
 
+    /**Retrieves the comments from a channelId and from a date
+     * @param videoId The ID of the YouTube channel to retrieve comments for.
+     * @param paginationParams An optional object containing pagination parameters.
+     * @param paginationParams.maxResults The maximum number of results to return per page. Defaults to 10.
+     * @param paginationParams.pageToken The token for the page of results to retrieve. Defaults to an empty string.
+     * @returns An array of comment items.
+    */
+    async GetYoutubeCommentsFromDate(
+        videoId: string,
+        paginationParams: PaginationParams = { maxResults: 10, pageToken: '' }
+    ): Promise<YoutubeFilteredResponse<youtube_v3.Schema$CommentThread[]>> {
+        try {
+            const { data } = await this.youtube.commentThreads.list({
+                part: ['snippet', 'replies'],
+                videoId: videoId,
+                maxResults: paginationParams.maxResults,
+                pageToken: paginationParams.pageToken,
+                order: 'time' // Sorting comments by time, change as needed
+            });
+
+            return {
+                nextPageToken: data.nextPageToken,
+                pageInfo: data.pageInfo,
+                items: data.items || []
+            };
+        } catch (error: unknown) {
+            console.error(`[YOUTUBE] Error retrieving comments for video ${videoId}`);
+            return {
+                nextPageToken: undefined,
+                prevPageToken: undefined,
+                pageInfo: undefined,
+                items: []
+            };
+        }
+    }
+
     /**
      * Retrieves the videos for a given YouTube channel.
      * @param channelId The ID of the YouTube channel to retrieve videos for.

@@ -29,6 +29,7 @@ export class VideoController {
    * @returns A Promise that resolves to void.
    */
   async getVideos(req: Request, res: Response): Promise<void> {
+    console.log("req", req);
     try {
       // Get the channelId from the request
       const channelId: string | undefined = req.query?.channelId?.toString();

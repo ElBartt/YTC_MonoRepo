@@ -24,8 +24,15 @@ const app = express();
 // Set up middleware to parse JSON body
 app.use(express.json());
 
+const corsOptions = {
+    origin: 'http://localhost:5173', // This should match the origin of your frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'api-key', 'accept'],
+    credentials: true
+};
+
 // Enable CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Set up middleware to time the start of a request
 app.use(StartRequest);

@@ -35,6 +35,42 @@ export class CommentService {
         this.openAIService = new OpenAIService();
     }
 
+    /** Retrieves comments from a specific date
+     * @param date The date to retrieve comments from.
+     * @param forceRefresh Whether to force a refresh of the comments from the YouTube API.
+     * @returns A promise that resolves to an array of comments.
+     */
+    async GetCommentsFromDate(date: string, forceRefresh: boolean): Promise<CommentType[]> {
+        const youtubeComments = await this.youtubeAPI.GetYoutubeCommentsFromDate(date, {
+            maxResults: this.COMMENTS_NUMBER_LIMIT,
+        });
+        if (!youtubeComments?.items?.length) return [];
+
+        const dbComments: CommentType[] = youtubeComments.items
+            .map((comment, index) => ({
+                id: comment.id || '',
+                commenter: comment.snippet?.topLevelComment?.snippet?.authorDisplayName || '',
+                comment: comment.snippet?.topLevelComment?.snippet?.textDisplay || '',
+                date: comment.snippet?.topLevelComment?.snippet?.publishedAt || '',
+                relevance_order: index,
+                like_count: comment.snippet?.topLevelComment?.snippet?.likeCount || 0,
+                reply_count: comment.snippet?.totalReplyCount || 0,
+                gpt: '',
+                unwanted: false,
+                question: false,
+                feedback: false,
+                idea: false,
+                collaboration: false,
+                video_id: '',
+            }))
+            .filter(comment => comment.id !== '' && comment.commenter !== '' && comment.comment !== '');
+
+        await this.classifyComments(dbComments, '');
+        await this.InsertCommentList(dbComments);
+
+        return dbComments;
+    }
+
     /**
      * Retrieves comments for a specific video.
      * @param videoId The ID of the video to retrieve comments for.
