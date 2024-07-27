@@ -40,3 +40,4 @@ Thumbs.db
 
 # Env files
 **/.env
+apps/ytc-back/utils/ytc-venv
