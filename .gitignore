@@ -46,3 +46,4 @@ Thumbs.db
 # Hugging Face
 comments.csv
 /cache
+apps/ytc-back/utils/ytc-venv
