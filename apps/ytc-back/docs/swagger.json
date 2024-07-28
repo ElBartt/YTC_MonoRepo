@@ -267,6 +267,97 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Add a new channel",
+                "description": "Add a new channel from body request json",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "channelId"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Mastu"
+                                    },
+                                    "user_id": {
+                                        "type": "number",
+                                        "example": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "message": {
+                                                "type": "string",
+                                                "example": "Channel added successfully!"
+                                            },
+                                            "userId": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing channel parameter in body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "string",
+                                            "example": "Missing channel parameter"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "example": "Missing is_admin parameter"
+                                        }
+                                    ]
+                                },
+                                "examples": {
+                                    "missingUsername": {
+                                        "value": "Missing channel parameter in body"
+                                    },
+                                    "missingIsAdmin": {
+                                        "value": "Missing is_admin parameter in body"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Unauthorized to access this resource"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/videos": {
