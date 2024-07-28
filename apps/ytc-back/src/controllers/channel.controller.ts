@@ -5,6 +5,7 @@
 
 import { Request, Response } from 'express';
 import { ChannelService } from '../services/channel.service';
+import { ChannelType } from '@ytc/shared/models/util';
 
 /**
  * Controller class for handling channel-related requests.
@@ -51,6 +52,30 @@ export class ChannelController {
     } catch (error) {
       console.error(error);
       res.status(500).send('An error occurred while fetching channels');
+    }
+  }
+
+  /**
+   * Retrieves channels associated with a given user ID.
+   * @param req The request object.
+   * @param res The response object.
+   * @returns Promise<void>
+   */
+  async addChannel(req: Request, res: Response): Promise<void> {
+    try {
+      const channel: ChannelType = Object.assign({}, req.body);
+
+      if (!req.user.is_admin) {
+        res.status(401).send('Unauthorized to access this resource');
+        return;
+      }
+
+      const channelId = await this.channelService.AddChannel(channel);
+
+      res.status(201).json({ message: 'Channel added successfully!', channelId });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('An error occurred while adding a new user');
     }
   }
 }

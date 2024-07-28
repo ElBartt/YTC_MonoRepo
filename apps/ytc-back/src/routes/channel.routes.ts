@@ -15,4 +15,6 @@ import { ChannelController } from "../controllers/channel.controller";
 export const channelRouter = Router();
 const channelController = new ChannelController();
 
+channelRouter.post('/', channelController.addChannel.bind(channelController));
+
 channelRouter.get('/', channelController.getChannels.bind(channelController));
